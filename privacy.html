@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="PangaLeo privacy policy and data practices."
+    />
+    <title>PangaLeo</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="apple-touch-icon" href="assets/logo.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a class="brand" href="index.html">
+          <img src="assets/logo.png" alt="PangaLeo icon" />
+          <span>PangaLeo</span>
+        </a>
+        <div class="nav-right">
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            data-i18n="nav.menu"
+          >
+            Menu
+          </button>
+          <nav id="site-nav" class="site-nav">
+            <a href="about.html" data-i18n="nav.about">About</a>
+            <a href="index.html#workflow" data-i18n="nav.how">How It Works</a>
+            <a href="index.html#screens" data-i18n="nav.screens">Screens</a>
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+            <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
+            <button
+              class="nav-cta"
+              type="button"
+              data-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+              data-i18n="nav.demo"
+            >
+              Download now
+            </button>
+          </nav>
+          <div class="lang-switch" role="group" aria-label="Language switch">
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+            <button class="lang-button" type="button" data-lang="sw">SW</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <span class="eyebrow" data-i18n="privacy.eyebrow">Privacy Policy</span>
+          <h1 data-i18n="privacy.title">Privacy that is clear, calm, and transparent.</h1>
+          <p data-i18n="privacy.updated">Last updated: February 17, 2026.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container content reveal">
+          <h2 data-i18n="privacy.overview.title">Overview</h2>
+          <p data-i18n="privacy.overview.body">
+            PangaLeo values privacy and handles information with care. This
+            policy explains what we collect, how we use it, and the choices
+            available to you when using our platform.
+          </p>
+
+          <h2 data-i18n="privacy.collect.title">Information we collect</h2>
+          <p data-i18n="privacy.collect.body">We collect information that helps operate the platform, such as:</p>
+          <ul>
+            <li data-i18n="privacy.collect.one">Account details such as name, phone number, email address, and username.</li>
+            <li data-i18n="privacy.collect.two">Login credentials (password) used to access your account.</li>
+            <li data-i18n="privacy.collect.three">Photos and property listing details you upload.</li>
+            <li data-i18n="privacy.collect.four">Precise location (GPS) used to support property discovery and map features.</li>
+          </ul>
+
+          <h2 id="data-deletion" data-i18n="privacy.deletion.title">Data Deletion and Account Removal</h2>
+          <p data-i18n="privacy.deletion.intro">
+            We provide a transparent way for users to delete their accounts and all associated personal data.
+          </p>
+          <p data-i18n="privacy.deletion.inapp">
+            In-App Deletion: Users can delete their account at any time by navigating to Settings &gt; Profile &gt; Delete Account within the PangaLeo app.
+          </p>
+          <p>
+            <span data-i18n="privacy.deletion.web">
+              Web Request: If you cannot access the app, you may request account and data deletion by emailing us at
+            </span>
+            <a href="mailto:kachehubinfo@gmail.com">kachehubinfo@gmail.com</a>.
+          </p>
+          <p data-i18n="privacy.deletion.timing">
+            Upon request, all personal data (name, email, and profile details) will be permanently removed from our active databases within 30 days, except where retention is required by law.
+          </p>
+
+          <h2 data-i18n="privacy.children.title">Children's Privacy</h2>
+          <p data-i18n="privacy.children.body">
+            PangaLeo is not intended for use by children under the age of 13. We do not knowingly collect personal information from children. If we become aware that a child under 13 has provided us with personal information, we will take immediate steps to delete such data.
+          </p>
+
+          <h2 data-i18n="privacy.use.title">How we use information</h2>
+          <p data-i18n="privacy.use.body">We use collected information to:</p>
+          <ul>
+            <li data-i18n="privacy.use.one">Provide and maintain the PangaLeo service.</li>
+            <li data-i18n="privacy.use.two">Keep property data accurate and accessible to your team.</li>
+            <li data-i18n="privacy.use.three">Improve performance, reliability, and user experience.</li>
+          </ul>
+
+          <h2 data-i18n="privacy.share.title">Sharing and disclosure</h2>
+          <p data-i18n="privacy.share.body">
+            We do not sell your data. We use service providers such as Supabase
+            for storage and Google Maps for map features. They process data to
+            deliver the service, and we only share data as needed or when
+            required by law.
+          </p>
+
+          <h2 data-i18n="privacy.retention.title">Data retention</h2>
+          <p data-i18n="privacy.retention.body">
+            We retain information only as long as needed to provide the service
+            and meet legal obligations.
+          </p>
+
+          <h2 data-i18n="privacy.choices.title">Your choices</h2>
+          <p data-i18n="privacy.choices.body">
+            You can review or update account information at any time. Contact us
+            if you want to access, correct, or delete data.
+          </p>
+
+          <h2 data-i18n="privacy.changes.title">Changes to this policy</h2>
+          <p data-i18n="privacy.changes.body">
+            We may update this policy to reflect changes in our practices. When
+            we do, the updated date at the top will change.
+          </p>
+
+          <h2 data-i18n="privacy.contact.title">Contact</h2>
+          <p>
+            <span data-i18n="privacy.contact.body">
+              If you have questions about privacy or data handling, reach out at
+            </span>
+            <a href="mailto:kachehubinfo@gmail.com">kachehubinfo@gmail.com</a>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand">
+            <img src="assets/logo.png" alt="PangaLeo icon" />
+            <span>PangaLeo</span>
+          </div>
+          <p data-i18n="footer.tagline">
+            A modern property platform built for owners, clients, and confident
+            decisions.
+          </p>
+        </div>
+        <div class="footer-links">
+          <strong data-i18n="footer.company">Company</strong>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
+          <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
+        </div>
+        <div class="footer-links">
+          <strong data-i18n="footer.explore">Explore</strong>
+          <a href="index.html#workflow" data-i18n="nav.how">How It Works</a>
+          <a href="index.html#screens" data-i18n="nav.screens">Screens</a>
+        </div>
+        <div class="footer-links">
+          <strong data-i18n="footer.contact">Contact</strong>
+          <a href="mailto:kachehubinfo@gmail.com" data-open-form>
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.2-.5 6.8 5.2 6.8-5.2H5.2z" fill="currentColor" />
+              <path d="M5 8.8V17a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.8l-6.1 4.7a2 2 0 0 1-2.4 0L5 8.8z" fill="currentColor" />
+            </svg>
+            <span data-i18n="footer.email">Email us</span>
+          </a>
+          <a href="https://wa.me/255689178891" target="_blank" rel="noopener" data-whatsapp="255689178891">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
+              <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
+            </svg>
+            <span data-i18n="footer.whatsapp">WhatsApp</span>
+          </a>
+          <a href="tel:0689178891">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.5 3h2.1c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.3 1.1l-1 1c.6 1.2 1.6 2.3 2.8 3l1-1c.3-.3.7-.4 1.1-.3l3 .8c.5.1.8.5.8 1v2.1c0 .6-.5 1-1.1 1-7.1 0-12.9-5.8-12.9-12.9 0-.6.4-1.1 1-1.1z" fill="currentColor" />
+            </svg>
+            <span data-i18n="footer.phone">Call us</span>
+          </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="currentColor" />
+              <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="currentColor" />
+            </svg>
+            <span data-i18n="footer.download">Download now</span>
+          </a>
+        </div>
+      </div>
+      <div class="container footer-meta">
+        <small>
+          <span data-i18n="footer.copy_prefix">©</span>
+          <span data-year></span>
+          <span data-i18n="footer.copy_suffix">PangaLeo. All rights reserved.</span>
+        </small>
+        <small>Developed by <a href="https://kachehub.com" target="_blank" rel="noopener">kachehub.com</a></small>
+      </div>
+    </footer>
+
+    <div class="side-form" data-side-form aria-hidden="true">
+      <button class="side-form-backdrop" type="button" data-side-form-close aria-label="Close"></button>
+      <div class="side-form-panel" role="dialog" aria-modal="true" aria-labelledby="side-form-title">
+        <div class="side-form-header">
+          <h3 id="side-form-title" data-i18n="sideform.title">Send a message</h3>
+          <button class="side-form-close" type="button" data-side-form-close aria-label="Close">
+            ×
+          </button>
+        </div>
+        <form
+          class="contact-form"
+          data-email-form
+          data-emailjs-service="YOUR_EMAILJS_SERVICE_ID"
+          data-emailjs-template="YOUR_EMAILJS_TEMPLATE_ID"
+          data-emailjs-public="YOUR_EMAILJS_PUBLIC_KEY"
+        >
+          <input type="hidden" name="to_email" value="kachehubinfo@gmail.com" />
+          <input type="text" name="name" placeholder="Your name" data-i18n-placeholder="contact.form.name" required />
+          <input type="email" name="email" placeholder="Email address" data-i18n-placeholder="contact.form.email" required />
+          <input type="text" name="company" placeholder="Company or portfolio" data-i18n-placeholder="contact.form.company" />
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Tell us what you need"
+            data-i18n-placeholder="contact.form.message"
+            required
+          ></textarea>
+          <p class="form-status" data-form-status></p>
+          <button class="button button-primary" type="submit" data-i18n="contact.form.button">
+            Send message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="floating-actions">
+      <a
+        class="whatsapp"
+        href="https://wa.me/255689178891"
+        target="_blank"
+        rel="noopener"
+        data-whatsapp="255689178891"
+        aria-label="Chat on WhatsApp"
+      >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
+          <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
+        </svg>
+      </a>
+      <a class="email" href="mailto:kachehubinfo@gmail.com" data-open-form aria-label="Email us">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.2-.5 6.8 5.2 6.8-5.2H5.2z" fill="currentColor" />
+          <path d="M5 8.8V17a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.8l-6.1 4.7a2 2 0 0 1-2.4 0L5 8.8z" fill="currentColor" />
+        </svg>
+      </a>
+    </div>
+  </body>
+</html>

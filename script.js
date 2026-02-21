@@ -169,6 +169,8 @@ if (screens) {
   let isAutoScrolling = false;
   let rafId = null;
   let userInteracting = false;
+  let userScrollTimeout = null;
+  let autoScrollResumeTimeout = null;
 
   const stepAutoScroll = () => {
     if (!isAutoScrolling) return;
@@ -204,14 +206,30 @@ if (screens) {
     }
   };
 
-  screens.addEventListener('mouseenter', () => {
+  const pauseAutoScroll = (resumeDelay = 1800) => {
     userInteracting = true;
+    if (autoScrollResumeTimeout) clearTimeout(autoScrollResumeTimeout);
+    autoScrollResumeTimeout = setTimeout(() => {
+      userInteracting = false;
+    }, resumeDelay);
+  };
+
+  const handleUserScroll = () => {
+    pauseAutoScroll(2200);
+    if (userScrollTimeout) clearTimeout(userScrollTimeout);
+    userScrollTimeout = setTimeout(() => {
+      userInteracting = false;
+    }, 2200);
+  };
+
+  screens.addEventListener('mouseenter', () => {
+    pauseAutoScroll();
   });
   screens.addEventListener('mouseleave', () => {
     userInteracting = false;
   });
   screens.addEventListener('touchstart', () => {
-    userInteracting = true;
+    pauseAutoScroll(2600);
   }, { passive: true });
   screens.addEventListener('touchend', () => {
     userInteracting = false;
@@ -219,6 +237,7 @@ if (screens) {
   screens.addEventListener('touchcancel', () => {
     userInteracting = false;
   });
+  screens.addEventListener('scroll', handleUserScroll, { passive: true });
 
   updateAutoScroll();
   screenQuery.addEventListener('change', updateAutoScroll);

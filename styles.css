@@ -1060,10 +1060,61 @@ main {
 }
 
 @media (max-width: 720px) {
+  .hero {
+    padding: 48px 0 56px;
+  }
+
+  .hero-grid {
+    gap: 24px;
+  }
+
+  .hero-slider {
+    order: 1;
+    min-height: 320px;
+    border-radius: 28px;
+  }
+
+  .hero-content {
+    order: 2;
+    margin-top: -56px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 26px;
+    padding: 20px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(12px);
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    margin: 18px 0 16px;
+  }
+
+  .store-links {
+    width: 100%;
+  }
+
+  .store-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .stats {
+    margin-top: 18px;
+  }
+
   .screens {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     gap: 16px;
     padding-bottom: 12px;
     -webkit-overflow-scrolling: touch;

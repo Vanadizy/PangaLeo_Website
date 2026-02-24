@@ -371,7 +371,7 @@ const translations = {
     'contact.email.label': 'Email:',
     'contact.phone.label': 'Phone:',
     'contact.availability.label': 'Availability:',
-    'contact.availability.value': 'Monday to Friday, 9:00 - 17:00',
+    'contact.availability.value': 'Every day',
     'contact.form.title': 'Send a message',
     'contact.form.name': 'Your name',
     'contact.form.email': 'Email address',
@@ -550,7 +550,7 @@ const translations = {
     'contact.email.label': 'Barua pepe:',
     'contact.phone.label': 'Simu:',
     'contact.availability.label': 'Upatikanaji:',
-    'contact.availability.value': 'Jumatatu hadi Ijumaa, 9:00 - 17:00',
+    'contact.availability.value': 'Kila siku',
     'contact.form.title': 'Tuma ujumbe',
     'contact.form.name': 'Jina lako',
     'contact.form.email': 'Anwani ya barua pepe',
@@ -622,10 +622,10 @@ const getTranslation = (key) => {
 const updateEmailLinks = () => {
   const subject = getTranslation('email.subject');
   const body = getTranslation('email.body');
-  const params = new URLSearchParams();
-  if (subject) params.set('subject', subject);
-  if (body) params.set('body', body);
-  const query = params.toString();
+  const parts = [];
+  if (subject) parts.push(`subject=${encodeURIComponent(subject)}`);
+  if (body) parts.push(`body=${encodeURIComponent(body)}`);
+  const query = parts.join('&');
   const href = query ? `mailto:${CONTACT_EMAIL}?${query}` : `mailto:${CONTACT_EMAIL}`;
   document.querySelectorAll('[data-email-link]').forEach((link) => {
     link.href = href;

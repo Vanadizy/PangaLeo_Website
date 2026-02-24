@@ -802,6 +802,36 @@ main {
   gap: 32px;
 }
 
+.contact-actions {
+  display: grid;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.social-block h3 {
+  font-family: var(--font-display);
+  margin: 0 0 12px;
+}
+
+.social-links {
+  display: grid;
+  gap: 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.social-handle {
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
 .contact-card {
   background: var(--surface-2);
   padding: 24px;

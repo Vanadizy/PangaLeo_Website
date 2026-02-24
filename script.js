@@ -243,83 +243,6 @@ if (screens) {
   screenQuery.addEventListener('change', updateAutoScroll);
 }
 
-const sideForm = document.querySelector('[data-side-form]');
-const openFormButtons = document.querySelectorAll('[data-open-form]');
-const closeFormButtons = sideForm ? sideForm.querySelectorAll('[data-side-form-close]') : [];
-
-const openSideForm = (event) => {
-  if (!sideForm) return;
-  if (event) event.preventDefault();
-  sideForm.classList.add('is-open');
-  sideForm.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('side-form-open');
-  const firstInput = sideForm.querySelector('input, textarea, button');
-  if (firstInput) firstInput.focus();
-};
-
-const closeSideForm = () => {
-  if (!sideForm) return;
-  sideForm.classList.remove('is-open');
-  sideForm.setAttribute('aria-hidden', 'true');
-  document.body.classList.remove('side-form-open');
-};
-
-openFormButtons.forEach((button) => {
-  button.addEventListener('click', openSideForm);
-});
-
-closeFormButtons.forEach((button) => {
-  button.addEventListener('click', closeSideForm);
-});
-
-window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && sideForm && sideForm.classList.contains('is-open')) {
-    closeSideForm();
-  }
-});
-
-const emailForms = document.querySelectorAll('[data-email-form]');
-let emailjsInitialized = false;
-
-const setFormStatus = (form, key, state) => {
-  const status = form.querySelector('[data-form-status]');
-  if (!status) return;
-  status.dataset.statusKey = key;
-  status.textContent = getTranslation(key);
-  status.classList.remove('is-success', 'is-error');
-  if (state === 'success') status.classList.add('is-success');
-  if (state === 'error') status.classList.add('is-error');
-};
-
-emailForms.forEach((form) => {
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const serviceId = form.dataset.emailjsService;
-    const templateId = form.dataset.emailjsTemplate;
-    const publicKey = form.dataset.emailjsPublic;
-
-    if (!window.emailjs || !serviceId || !templateId || !publicKey) {
-      setFormStatus(form, 'form.status.missing', 'error');
-      return;
-    }
-
-    if (!emailjsInitialized) {
-      window.emailjs.init(publicKey);
-      emailjsInitialized = true;
-    }
-
-    setFormStatus(form, 'form.status.sending');
-
-    try {
-      await window.emailjs.sendForm(serviceId, templateId, form);
-      setFormStatus(form, 'form.status.success', 'success');
-      form.reset();
-    } catch (error) {
-      setFormStatus(form, 'form.status.fail', 'error');
-    }
-  });
-});
-
 const translations = {
   en: {
     'nav.menu': 'Menu',
@@ -409,6 +332,12 @@ const translations = {
     'footer.whatsapp': 'WhatsApp',
     'footer.phone': 'Call us',
     'footer.download': 'Download now',
+    'email.subject': 'PangaLeo inquiry',
+    'email.body': 'Hello PangaLeo team,\nI would like to learn more about PangaLeo.\n',
+    'contact.email.title': 'Email the PangaLeo team',
+    'contact.email.body': 'Tap the button to open your email app with a pre-filled message.',
+    'contact.email.button': 'Email PangaLeo',
+    'contact.social.title': 'Follow PangaLeo',
     'whatsapp.message': 'Hello PangaLeo team, I need help finding a rental.',
     'sideform.title': 'Send a message',
     'form.status.sending': 'Sending...',
@@ -582,6 +511,12 @@ const translations = {
     'footer.whatsapp': 'WhatsApp',
     'footer.phone': 'Piga simu',
     'footer.download': 'Pakua sasa',
+    'email.subject': 'Ombi la taarifa - PangaLeo',
+    'email.body': 'Habari timu ya PangaLeo,\nNingependa kupata taarifa zaidi kuhusu PangaLeo.\n',
+    'contact.email.title': 'Tuma barua pepe kwa timu ya PangaLeo',
+    'contact.email.body': 'Bonyeza kitufe kufungua programu ya barua pepe ukiwa na ujumbe uliowekwa tayari.',
+    'contact.email.button': 'Tuma barua pepe',
+    'contact.social.title': 'Tufuate PangaLeo',
     'whatsapp.message': 'Habari timu ya PangaLeo, naomba msaada wa kupata nyumba ya kupanga.',
     'sideform.title': 'Tuma ujumbe',
     'form.status.sending': 'Inatumwa...',
@@ -675,11 +610,26 @@ const browserLang = navigator.language ? navigator.language.slice(0, 2) : 'en';
 const initialLang = translations[storedLang] ? storedLang : 'sw';
 let currentLang = initialLang;
 
+const CONTACT_EMAIL = 'leonardjohanes964@gmail.com';
+
 const getTranslation = (key) => {
   const fromCurrent = translations[currentLang] && translations[currentLang][key];
   if (fromCurrent) return fromCurrent;
   const fallback = translations.en && translations.en[key];
   return fallback || '';
+};
+
+const updateEmailLinks = () => {
+  const subject = getTranslation('email.subject');
+  const body = getTranslation('email.body');
+  const params = new URLSearchParams();
+  if (subject) params.set('subject', subject);
+  if (body) params.set('body', body);
+  const query = params.toString();
+  const href = query ? `mailto:${CONTACT_EMAIL}?${query}` : `mailto:${CONTACT_EMAIL}`;
+  document.querySelectorAll('[data-email-link]').forEach((link) => {
+    link.href = href;
+  });
 };
 
 const updateWhatsAppLinks = () => {
@@ -728,14 +678,8 @@ const applyTranslations = (lang) => {
     }
   }
 
-  document.querySelectorAll('[data-form-status]').forEach((status) => {
-    const key = status.dataset.statusKey;
-    if (key) {
-      status.textContent = getTranslation(key);
-    }
-  });
-
   updateWhatsAppLinks();
+  updateEmailLinks();
 };
 
 const setActiveLangButton = (lang) => {

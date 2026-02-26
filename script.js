@@ -6,6 +6,18 @@ if (navToggle && nav) {
     const isOpen = nav.classList.toggle('is-open');
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  const closeNav = () => {
+    nav.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  nav.querySelectorAll('a, button').forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!nav.classList.contains('is-open')) return;
+      closeNav();
+    });
+  });
 }
 
 let revealObserver = null;
@@ -286,6 +298,7 @@ const translations = {
   en: {
     'nav.menu': 'Menu',
     'nav.about': 'About',
+    'nav.categories': 'House category',
     'nav.how': 'How It Works',
     'nav.screens': 'Tenant Journey',
     'nav.contact': 'Contact',
@@ -300,6 +313,8 @@ const translations = {
     'hero.title': 'Find the right rental faster, without the usual stress.',
     'hero.body':
       'PangaLeo removes the friction of finding places to rent. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
+    'hero.body_extra':
+      'From verified photos to live availability updates, PangaLeo keeps every step organized so tenants can compare options quickly and owners stay in full control.',
     'hero.cta_primary': 'Download now',
     'hero.cta_secondary': 'See how it works',
     'stat.one.title': 'Client-ready listings',
@@ -309,10 +324,30 @@ const translations = {
     'stat.three.title': 'Shared context',
     'stat.three.desc': 'Notes that keep everyone aligned.',
     'hero.card': 'Modern by design, trusted by owners, and friendly for clients.',
+    'categories.eyebrow': 'Categories',
+    'categories.title': 'Find the right space fast.',
+    'categories.body':
+      'Houses, apartments, rooms, hotels, event halls, and more to match every need.',
+    'categories.body_extra':
+      'Explore options by type and find spaces that match your budget, location, and timeline in just a few taps.',
+    'category.houses.title': 'Houses',
+    'category.houses.body': 'Standalone homes for families and long stays.',
+    'category.apartments.title': 'Apartments',
+    'category.apartments.body': 'Modern apartments with shared amenities.',
+    'category.rooms.title': 'Rooms',
+    'category.rooms.body': 'Private or shared rooms that fit any budget.',
+    'category.hotels.title': 'Hotels',
+    'category.hotels.body': 'Short stays with trusted hospitality.',
+    'category.events.title': 'Event halls',
+    'category.events.body': 'Spaces for meetings, celebrations, and events.',
+    'category.more.title': 'More categories',
+    'category.more.body': 'Explore new spaces added every day.',
     'preview.eyebrow': 'Property previews',
     'preview.title': 'Showcase homes with a premium look.',
     'preview.body': 'High-quality imagery and clear details help clients move with confidence.',
     'preview.card.one.tag': 'New listing',
+    'preview.body_extra':
+      'Each listing highlights price, location, and amenities at a glance so clients can decide faster without endless back-and-forth.',
     'preview.card.one.title': 'Sunlit 3BR family home',
     'preview.card.one.meta': 'Dar es Salaam (Kinondoni) • From TZS 850k/mo',
     'preview.card.two.tag': 'Popular',
@@ -325,6 +360,8 @@ const translations = {
     'why.title': 'Clarity for owners. Confidence for clients.',
     'why.body':
       'Every screen keeps property facts, media, and availability aligned so both sides feel informed.',
+    'why.body_extra':
+      'Owners update listings once and everyone sees the same trusted information, reducing confusion and saving time.',
     'feature.one.title': 'Client-ready listings',
     'feature.one.desc': 'A clean presentation of price, amenities, and media for quick comparisons.',
     'feature.two.title': 'Owner control panel',
@@ -342,6 +379,8 @@ const translations = {
     'workflow.title': 'From owner upload to client decision.',
     'workflow.body': 'A simple flow that supports owners, teams, and clients in the same workspace.',
     'step.one.title': 'Owners publish',
+    'workflow.body_extra':
+      'The journey is straightforward: publish, explore, and confirm - with every step tracked so nothing is missed.',
     'step.one.desc': 'Capture pricing, category, amenities, and location details with clarity.',
     'step.two.title': 'Clients explore',
     'step.two.desc': 'Portrait-first screens make listings easy to scan and compare.',
@@ -351,6 +390,8 @@ const translations = {
     'screens.title': 'A welcome journey for tenants to find their home.',
     'screens.body':
       'Tenants can browse, compare, and move forward with confidence through a clean portrait-first experience.',
+    'screens.body_extra':
+      'Clear navigation and fast loading screens help tenants stay focused on the right choice.',
     'screens.card.one': 'Home discovery',
     'screens.card.two': 'Client browse',
     'screens.card.three': 'Listing detail',
@@ -359,6 +400,8 @@ const translations = {
     'trust.title': 'Designed for confidence and accountability.',
     'trust.body':
       'PangaLeo respects your data. Listings stay organized, access is controlled, and privacy protects both owners and clients.',
+    'trust.body_extra':
+      'Transparent updates and clear policies ensure that every change is intentional and easy to review.',
     'trust.one.title': 'Purposeful data',
     'trust.one.desc': 'We collect only what keeps properties accurate and current.',
     'trust.two.title': 'Transparent updates',
@@ -469,6 +512,7 @@ const translations = {
   sw: {
     'nav.menu': 'Menyu',
     'nav.about': 'Kuhusu',
+    'nav.categories': 'Aina za nyumba',
     'nav.how': 'Jinsi Inavyofanya Kazi',
     'nav.screens': 'Safari ya mpangaji',
     'nav.contact': 'Wasiliana',
@@ -480,9 +524,11 @@ const translations = {
     'marquee.four': 'Kumbi za matukio',
     'marquee.five': 'Hoteli',
     'hero.eyebrow': 'Matatizo ya kutafuta nyumba basi',
-    'hero.title': 'Tafuta nyumba ya kupanga haraka, bila usumbufu wa kawaida.',
+    'hero.title': 'Tafuta nyumba, chumba, apartimenti, hoteli, ukumbi kwa haraka kabisa kidigitali.',
     'hero.body':
       'PangaLeo inaondoa changamoto za kutafuta maeneo ya kupanga. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
+    'hero.body_extra':
+      'Kuanzia picha zilizothibitishwa hadi sasisho la upatikanaji wa muda halisi, PangaLeo huweka kila hatua kuwa wazi ili wapangaji walenge chaguo sahihi kwa haraka.',
     'hero.cta_primary': 'Pakua sasa',
     'hero.cta_secondary': 'Ona inavyofanya kazi',
     'stat.one.title': 'Orodha zilizo tayari kwa wateja',
@@ -492,10 +538,30 @@ const translations = {
     'stat.three.title': 'Muktadha wa pamoja',
     'stat.three.desc': 'Maoni na taarifa za mali hubaki pamoja.',
     'hero.card': 'Muonekano wa kisasa, unaoaminika na wamiliki, na rafiki kwa wateja.',
+    'categories.eyebrow': 'Aina za makazi',
+    'categories.title': 'Pata sehemu sahihi haraka.',
+    'categories.body':
+      'Nyumba, apartimenti, vyumba, hoteli, kumbi za matukio, na zaidi kwa kila mahitaji.',
+    'categories.body_extra':
+      'Chagua aina ya nafasi inayokufaa kwa bajeti, eneo, na muda wako kwa hatua chache tu.',
+    'category.houses.title': 'Nyumba',
+    'category.houses.body': 'Makazi ya familia na kukaa kwa muda mrefu.',
+    'category.apartments.title': 'Apartimenti',
+    'category.apartments.body': 'Fleti za kisasa zenye huduma za pamoja.',
+    'category.rooms.title': 'Vyumba',
+    'category.rooms.body': 'Vyumba binafsi au vya pamoja kulingana na bajeti.',
+    'category.hotels.title': 'Hoteli',
+    'category.hotels.body': 'Makazi ya muda mfupi yenye huduma za kuaminika.',
+    'category.events.title': 'Kumbi za matukio',
+    'category.events.body': 'Nafasi kwa mikutano, sherehe, na matukio.',
+    'category.more.title': 'Kategoria zaidi',
+    'category.more.body': 'Gundua nafasi mpya zinazoongezwa kila siku.',
     'preview.eyebrow': 'Muonekano wa nyumba',
     'preview.title': 'Onyesha nyumba kwa mwonekano wa kisasa.',
     'preview.body': 'Picha bora, maelezo mafupi, na viwango vya bei hutoa uamuzi wa haraka.',
     'preview.card.one.tag': 'Mpya',
+    'preview.body_extra':
+      'Kila orodha inaonyesha bei, eneo, na huduma muhimu kwa muonekano wa haraka bila mazungumzo marefu.',
     'preview.card.one.title': 'Nyumba ya familia vyumba 3 yenye mwanga mwingi',
     'preview.card.one.meta': 'Dar es Salaam (Kinondoni) ? Kuanzia TZS 850k/mo',
     'preview.card.two.tag': 'Maarufu',
@@ -508,6 +574,8 @@ const translations = {
     'why.title': 'Uwazi kwa wamiliki. Ujasiri kwa wateja.',
     'why.body':
       'Kila skrini huweka taarifa za mali, picha, na upatikanaji katika mstari mmoja ili pande zote ziwe na maamuzi sahihi.',
+    'why.body_extra':
+      'Wamiliki huboresha taarifa mara moja na kila mtu huona taarifa hiyo hiyo, hivyo kupunguza mkanganyiko.',
     'feature.one.title': 'Orodha zilizo tayari kwa wateja',
     'feature.one.desc': 'Bei, huduma, na picha huwasilishwa kwa mpangilio unaorahisisha kulinganisha.',
     'feature.two.title': 'Dashibodi ya mmiliki',
@@ -525,6 +593,8 @@ const translations = {
     'workflow.title': 'Kutoka kupakia kwa mmiliki hadi uamuzi wa mteja.',
     'workflow.body': 'Mtiririko rahisi unaowaunganisha wamiliki, timu, na wateja kwenye taarifa moja.',
     'step.one.title': 'Wamiliki huchapisha',
+    'workflow.body_extra':
+      'Safari ni rahisi: chapisha, chunguza, na thibitisha - kila hatua ikiwa imepangwa vizuri.',
     'step.one.desc': 'Weka bei, aina, huduma, na maelezo ya eneo kwa uwazi wa juu.',
     'step.two.title': 'Wateja huchunguza',
     'step.two.desc': 'Skrini zilizo wima huwezesha kuchuja, kulinganisha, na kuona picha kwa urahisi.',
@@ -535,6 +605,8 @@ const translations = {
     'screens.title': 'Safari ya kukaribisha wapangaji kupata makazi yao.',
     'screens.body':
       'Wapangaji wanaweza kuvinjari, kulinganisha, na kuwasiliana kwa ujasiri kupitia skrini zilizo wazi na za haraka.',
+    'screens.body_extra':
+      'Muonekano ulio wazi na kasi ya skrini huwasaidia wapangaji kubaki kwenye maamuzi sahihi.',
     'screens.card.one': 'Ugunduzi wa nyumbani',
     'screens.card.two': 'Uvinjari wa mteja',
     'screens.card.three': 'Maelezo ya orodha',
@@ -543,6 +615,8 @@ const translations = {
     'trust.title': 'Imeundwa kwa ujasiri na uwajibikaji.',
     'trust.body':
       'PangaLeo inaheshimu data. Orodha zinabaki zimepangwa, ufikiaji unadhibitiwa, na faragha inalinda wamiliki na wateja.',
+    'trust.body_extra':
+      'Mabadiliko yanaonekana kwa uwazi na sera ziko wazi ili kila hatua iwe salama na inayoeleweka.',
     'trust.one.title': 'Data yenye kusudi',
     'trust.one.desc': 'Tunakusanya tu taarifa zinazohitajika kuweka mali sahihi na ya sasa.',
     'trust.two.title': 'Sasisho wazi',

@@ -8,25 +8,42 @@ if (navToggle && nav) {
   });
 }
 
-const revealItems = document.querySelectorAll('.reveal');
-if (revealItems.length) {
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+let revealObserver = null;
 
-    revealItems.forEach((item) => observer.observe(item));
+const observeRevealItems = (items) => {
+  if (!items || !items.length) return;
+  if ('IntersectionObserver' in window) {
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+    }
+
+    items.forEach((item) => revealObserver.observe(item));
   } else {
-    revealItems.forEach((item) => item.classList.add('is-visible'));
+    items.forEach((item) => item.classList.add('is-visible'));
   }
+};
+
+observeRevealItems(document.querySelectorAll('.reveal'));
+
+const sectionTargets = Array.from(document.querySelectorAll('main > section'));
+if (sectionTargets.length) {
+  sectionTargets.forEach((section, index) => {
+    section.classList.add('reveal', 'reveal-section');
+    if (index === 0) {
+      section.classList.add('is-visible');
+    }
+  });
+  observeRevealItems(sectionTargets.slice(1));
 }
 
 const yearTag = document.querySelector('[data-year]');
@@ -167,34 +184,54 @@ if (screens) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const screenQuery = window.matchMedia('(max-width: 720px)');
   let isAutoScrolling = false;
-  let rafId = null;
+  let autoScrollTimer = null;
+  let currentIndex = 0;
   let userInteracting = false;
   let userScrollTimeout = null;
   let autoScrollResumeTimeout = null;
 
-  const stepAutoScroll = () => {
-    if (!isAutoScrolling) return;
-    const maxScroll = screens.scrollWidth - screens.clientWidth;
-    if (maxScroll > 0 && !userInteracting) {
-      screens.scrollLeft += 0.45;
-      if (screens.scrollLeft >= maxScroll - 1) {
-        screens.scrollLeft = 0;
+  const getCards = () => Array.from(screens.querySelectorAll('.screen-card'));
+
+  const updateCurrentIndex = () => {
+    const cards = getCards();
+    if (!cards.length) return;
+    const scrollLeft = screens.scrollLeft;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    cards.forEach((card, index) => {
+      const distance = Math.abs(card.offsetLeft - scrollLeft);
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
       }
-    }
-    rafId = requestAnimationFrame(stepAutoScroll);
+    });
+    currentIndex = closestIndex;
+  };
+
+  const scrollToIndex = (index) => {
+    const cards = getCards();
+    if (!cards.length) return;
+    const targetIndex = index % cards.length;
+    const target = cards[targetIndex];
+    screens.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    currentIndex = targetIndex;
   };
 
   const startAutoScroll = () => {
     if (isAutoScrolling || prefersReducedMotion || !screenQuery.matches) return;
+    updateCurrentIndex();
     isAutoScrolling = true;
-    rafId = requestAnimationFrame(stepAutoScroll);
+    autoScrollTimer = setInterval(() => {
+      if (userInteracting) return;
+      scrollToIndex(currentIndex + 1);
+    }, 2200);
   };
 
   const stopAutoScroll = () => {
     isAutoScrolling = false;
-    if (rafId) {
-      cancelAnimationFrame(rafId);
-      rafId = null;
+    if (autoScrollTimer) {
+      clearInterval(autoScrollTimer);
+      autoScrollTimer = null;
     }
   };
 
@@ -219,7 +256,9 @@ if (screens) {
     if (userScrollTimeout) clearTimeout(userScrollTimeout);
     userScrollTimeout = setTimeout(() => {
       userInteracting = false;
+      updateCurrentIndex();
     }, 2200);
+    updateCurrentIndex();
   };
 
   screens.addEventListener('mouseenter', () => {
@@ -252,10 +291,15 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.privacy': 'Privacy Policy',
     'nav.demo': 'Download now',
+    'marquee.one': 'Apartments',
+    'marquee.two': 'Houses',
+    'marquee.three': 'Rooms',
+    'marquee.four': 'Event halls',
+    'marquee.five': 'Hotels',
     'hero.eyebrow': 'Rental search, solved',
     'hero.title': 'Find the right rental faster, without the usual stress.',
     'hero.body':
-      'PangaLeo removes the friction of house hunting. Verified listings, clear photos, real-time pricing, and availability, plus direct contact with owners and agents — all in one place.',
+      'PangaLeo removes the friction of finding places to rent. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
     'hero.cta_primary': 'Download now',
     'hero.cta_secondary': 'See how it works',
     'stat.one.title': 'Client-ready listings',
@@ -430,10 +474,15 @@ const translations = {
     'nav.contact': 'Wasiliana',
     'nav.privacy': 'Sera ya Faragha',
     'nav.demo': 'Pakua sasa',
+    'marquee.one': 'Apartimenti',
+    'marquee.two': 'Nyumba',
+    'marquee.three': 'Vyumba',
+    'marquee.four': 'Kumbi za matukio',
+    'marquee.five': 'Hoteli',
     'hero.eyebrow': 'Matatizo ya kutafuta nyumba basi',
     'hero.title': 'Tafuta nyumba ya kupanga haraka, bila usumbufu wa kawaida.',
     'hero.body':
-      'PangaLeo inaondoa changamoto za kutafuta nyumba. Orodha zilizothibitishwa, picha wazi, bei na upatikanaji wa muda halisi, pamoja na mawasiliano ya moja kwa moja na wamiliki au mawakala — vyote sehemu moja.',
+      'PangaLeo inaondoa changamoto za kutafuta maeneo ya kupanga. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.cta_primary': 'Pakua sasa',
     'hero.cta_secondary': 'Ona inavyofanya kazi',
     'stat.one.title': 'Orodha zilizo tayari kwa wateja',
@@ -643,6 +692,37 @@ const updateWhatsAppLinks = () => {
   });
 };
 
+const prepareWordAnimations = () => {
+  const targets = document.querySelectorAll(
+    '[data-animate-words], .hero h1, .page-hero h1, .section-title h2, .cta h2, .trust h2, .content h2'
+  );
+  if (!targets.length) return;
+  const delayStep = window.matchMedia('(max-width: 720px)').matches ? 35 : 55;
+
+  targets.forEach((element) => {
+    if (!element) return;
+    element.setAttribute('data-animate-words', '');
+    element.classList.add('reveal');
+    const text = element.textContent || '';
+    const words = text.trim().split(/\s+/).filter(Boolean);
+    if (!words.length) return;
+
+    element.textContent = '';
+    words.forEach((word, index) => {
+      const span = document.createElement('span');
+      span.className = 'word';
+      span.textContent = word;
+      span.style.setProperty('--word-delay', `${index * delayStep}ms`);
+      element.appendChild(span);
+      if (index < words.length - 1) {
+        element.appendChild(document.createTextNode(' '));
+      }
+    });
+  });
+
+  observeRevealItems(document.querySelectorAll('[data-animate-words].reveal'));
+};
+
 const applyTranslations = (lang) => {
   const dictionary = translations[lang] || translations.en;
   document.documentElement.lang = lang;
@@ -680,6 +760,7 @@ const applyTranslations = (lang) => {
 
   updateWhatsAppLinks();
   updateEmailLinks();
+  prepareWordAnimations();
 };
 
 const setActiveLangButton = (lang) => {

@@ -1,453 +1,886 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="PangaLeo is a modern property platform for owners and clients, keeping listings, availability, and collaboration in sync."
-    />
-    <title>PangaLeo</title>
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="description"
+      content="PangaLeo is a modern property platform for homes, apartments, rooms, hotels, event halls, and more—keeping listings, availability, and collaboration in sync."
+    />
+    <title>PangaLeo</title>
+
     <link rel="icon" type="image/png" href="assets/logo.png" />
     <link rel="apple-touch-icon" href="assets/logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-bar">
-        <a class="brand" href="index.html">
-          <img src="assets/logo.png" alt="PangaLeo icon" />
-          <span>PangaLeo</span>
-        </a>
-        <div class="nav-right">
-          <button
-            class="nav-toggle"
-            aria-expanded="false"
-            aria-controls="site-nav"
-            data-i18n="nav.menu"
-          >
-            Menu
-          </button>
-          <nav id="site-nav" class="site-nav">
-            <a href="about.html" data-i18n="nav.about">About</a>
-            <a href="index.html#workflow" data-i18n="nav.how">How It Works</a>
-            <a href="index.html#screens" data-i18n="nav.screens">Screens</a>
-            <a href="contact.html" data-i18n="nav.contact">Contact</a>
-            <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
-            <button
-              class="nav-cta"
-              type="button"
-              data-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-              data-i18n="nav.demo"
-            >
-              Download now
-            </button>
-          </nav>
-          <div class="lang-switch" role="group" aria-label="Language switch">
-            <button class="lang-button" type="button" data-lang="en">EN</button>
-            <button class="lang-button" type="button" data-lang="sw">SW</button>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-content">
-            <span class="eyebrow" data-i18n="hero.eyebrow">For owners and clients</span>
-            <h1 data-i18n="hero.title">A calm property experience for owners and their clients.</h1>
-            <p data-i18n="hero.body">
-              PangaLeo keeps listings clear for clients while giving owners
-              real-time control of pricing, availability, and media. Everything
-              stays in one place, so decisions happen faster and with confidence.
-            </p>
-            <div class="hero-actions">
-              <a
-                class="button button-primary"
-                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-                target="_blank"
-                rel="noopener"
-                data-i18n="hero.cta_primary"
-                >Download now</a
-              >
-              <a class="button button-outline" href="#workflow" data-i18n="hero.cta_secondary"
-                >See how it works</a
-              >
-            </div>
-            <div class="store-links flex flex-wrap gap-3">
-              <a
-                class="store-badge inline-flex items-center gap-3"
-                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-                target="_blank"
-                rel="noopener"
-                aria-label="Get PangaLeo on Google Play"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="#34A853" />
-                  <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="#FBBC04" />
-                  <path d="M13.3 12L3 20.3c.4.3.9.4 1.4.2l11.7-6.7-2.8-4.8z" fill="#4285F4" />
-                  <path d="M13.3 12l2.8-4.8L4.4 1.5c-.5-.3-1-.1-1.4.2L13.3 12z" fill="#EA4335" />
-                </svg>
-                <span class="store-text">
-                  <small>Get it on</small>
-                  <strong>Google Play</strong>
-                </span>
-              </a>
-              <div class="store-badge store-badge-apple is-disabled" role="status" aria-label="Apple App Store coming soon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M16.8 12.9c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-2-1.5-.2-2.9.9-3.7.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 2 2.6 3.4 2.5 1.3-.1 1.9-.9 3.5-.9 1.6 0 2.1.9 3.5.9 1.5 0 2.4-1.3 3.3-2.5 1-1.5 1.4-3 1.4-3.1-.1 0-2.8-1.1-2.8-4.2z"
-                    fill="currentColor"
-                  />
-                  <path d="M14.9 4.3c.7-.9 1.2-2.1 1.1-3.3-1 .1-2.2.7-2.9 1.6-.6.7-1.2 2-1.1 3.1 1.1.1 2.2-.6 2.9-1.4z" fill="currentColor" />
-                </svg>
-                <span class="store-text">
-                  <small>Apple App Store</small>
-                  <strong>Coming soon</strong>
-                </span>
-              </div>
-            </div>
-            <div class="stats">
-              <div class="stat">
-                <strong data-i18n="stat.one.title">Client-ready listings</strong>
-                <span data-i18n="stat.one.desc">Details that answer questions fast.</span>
-              </div>
-              <div class="stat">
-                <strong data-i18n="stat.two.title">Owner control</strong>
-                <span data-i18n="stat.two.desc">Availability updates in real time.</span>
-              </div>
-              <div class="stat">
-                <strong data-i18n="stat.three.title">Shared context</strong>
-                <span data-i18n="stat.three.desc">Notes that keep everyone aligned.</span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="hero-slider"
-            data-slider
-            data-slider-images="slide-1.png,slide-2.png,slide-3.png,slide-4.png"
-            data-slider-captions-en="Verified listings you can trust|Real-time price & availability updates|Clear photos and location details|Direct contact with owners & agents"
-            data-slider-captions-sw="Orodha zilizothibitishwa unazoweza kuamini|Bei na upatikanaji wa muda halisi|Picha wazi na maelezo ya eneo|Mawasiliano ya moja kwa moja na wamiliki au mawakala"
-            data-slider-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-            tabindex="0"
-            role="button"
-            aria-label="Download PangaLeo from Google Play"
-          >
-            <div class="slider-viewport">
-              <div class="slider-track" data-slider-track></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="preview" class="section">
-        <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <span class="eyebrow" data-i18n="preview.eyebrow">Property previews</span>
-              <h2 data-i18n="preview.title">Showcase homes with a premium look.</h2>
-            </div>
-            <p data-i18n="preview.body">
-              High-quality imagery and clear details help clients move with confidence.
-            </p>
-          </div>
-          <div class="property-grid">
-            <a
-              class="property-link"
-              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-              data-app-link="intent://property/kinondoni#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
-            >
-              <article class="property-card reveal" style="--photo: url('assets/house-01.png');">
-                <div class="property-photo">
-                  <div class="property-info">
-                    <span class="tag" data-i18n="preview.card.one.tag">New listing</span>
-                    <h3 data-i18n="preview.card.one.title">Sunlit 3BR family home</h3>
-                    <p data-i18n="preview.card.one.meta">Dar es Salaam (Kinondoni) • From TZS 850k/mo</p>
-                  </div>
-                </div>
-              </article>
-            </a>
-            <a
-              class="property-link"
-              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-              data-app-link="intent://property/njiro#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
-            >
-              <article class="property-card reveal" style="--photo: url('assets/house-02.png');">
-                <div class="property-photo">
-                  <div class="property-info">
-                    <span class="tag" data-i18n="preview.card.two.tag">Popular</span>
-                    <h3 data-i18n="preview.card.two.title">Modern 2BR city apartment</h3>
-                    <p data-i18n="preview.card.two.meta">Arusha (Njiro) • From TZS 1.2M/mo</p>
-                  </div>
-                </div>
-              </article>
-            </a>
-            <a
-              class="property-link"
-              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-              data-app-link="intent://property/stonetown#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
-            >
-              <article class="property-card reveal" style="--photo: url('assets/house-03.png');">
-                <div class="property-photo">
-                  <div class="property-info">
-                    <span class="tag" data-i18n="preview.card.three.tag">Seaside</span>
-                    <h3 data-i18n="preview.card.three.title">Ocean-view villa retreat</h3>
-                    <p data-i18n="preview.card.three.meta">Zanzibar (Stone Town) • From TZS 2.5M/mo</p>
-                  </div>
-                </div>
-              </article>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <span class="eyebrow" data-i18n="why.eyebrow">Why PangaLeo</span>
-              <h2 data-i18n="why.title">Clarity for owners. Confidence for clients.</h2>
-            </div>
-            <p data-i18n="why.body">
-              Every screen keeps property facts, media, and availability aligned
-              so both sides feel informed.
-            </p>
-          </div>
-          <div class="card-grid">
-            <div class="card reveal">
-              <h3 data-i18n="feature.one.title">Client-ready listings</h3>
-              <p data-i18n="feature.one.desc">
-                A clean presentation of price, amenities, and media for quick
-                comparisons.
-              </p>
-            </div>
-            <div class="card reveal">
-              <h3 data-i18n="feature.two.title">Owner control panel</h3>
-              <p data-i18n="feature.two.desc">
-                Update pricing and occupancy instantly without scattered tools.
-              </p>
-            </div>
-            <div class="card reveal">
-              <h3 data-i18n="feature.three.title">Trusted collaboration</h3>
-              <p data-i18n="feature.three.desc">
-                Comments and notes stay with each property so owners, agents,
-                and teams stay aligned.
-              </p>
-            </div>
-            <div class="card reveal">
-              <h3 data-i18n="feature.four.title">Location clarity</h3>
-              <p data-i18n="feature.four.desc">
-                Regions, districts, and ward details are structured for fast
-                discovery.
-              </p>
-            </div>
-            <div class="card reveal">
-              <h3 data-i18n="feature.five.title">Media that builds trust</h3>
-              <p data-i18n="feature.five.desc">
-                Image galleries and video previews keep clients confident in
-                what they see.
-              </p>
-            </div>
-            <div class="card reveal">
-              <h3 data-i18n="feature.six.title">Mobile-first performance</h3>
-              <p data-i18n="feature.six.desc">
-                Designed with Flutter for smooth, responsive experiences on the
-                go.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="workflow" class="section">
-        <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <span class="eyebrow" data-i18n="workflow.eyebrow">Workflow</span>
-              <h2 data-i18n="workflow.title">From owner upload to client decision.</h2>
-            </div>
-            <p data-i18n="workflow.body">
-              A simple flow that supports owners, teams, and clients in the same
-              workspace.
-            </p>
-          </div>
-          <div class="steps">
-            <div class="step reveal">
-              <span>1</span>
-              <h3 data-i18n="step.one.title">Owners publish</h3>
-              <p data-i18n="step.one.desc">
-                Capture pricing, category, amenities, and location details with
-                clarity.
-              </p>
-            </div>
-            <div class="step reveal">
-              <span>2</span>
-              <h3 data-i18n="step.two.title">Clients explore</h3>
-              <p data-i18n="step.two.desc">
-                Portrait-first screens make listings easy to scan and compare.
-              </p>
-            </div>
-            <div class="step reveal">
-              <span>3</span>
-              <h3 data-i18n="step.three.title">Teams close</h3>
-              <p data-i18n="step.three.desc">
-                Live status and notes keep owners and clients aligned through
-                the lease.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="screens" class="section">
-        <div class="container">
-          <div class="section-title reveal">
-            <div>
-              <span class="eyebrow" data-i18n="screens.eyebrow">Tenant journey</span>
-              <h2 data-i18n="screens.title">A welcome journey for tenants to find their home.</h2>
-            </div>
-            <p data-i18n="screens.body">
-              Tenants can browse, compare, and move forward with confidence
-              through a clean portrait-first experience.
-            </p>
-          </div>
-          <div class="screens">
-            <figure class="screen-card reveal">
-              <div class="screen-shot">
-                <img src="assets/screenshots/home.png" alt="Home screen" />
-              </div>
-              <figcaption class="screen-caption" data-i18n="screens.card.one">Home discovery</figcaption>
-            </figure>
-            <figure class="screen-card reveal">
-              <div class="screen-shot">
-                <img src="assets/screenshots/client%20view.png" alt="Client view screen" />
-              </div>
-              <figcaption class="screen-caption" data-i18n="screens.card.two">Client browse</figcaption>
-            </figure>
-            <figure class="screen-card reveal">
-              <div class="screen-shot">
-                <img src="assets/screenshots/detailed%20view.png" alt="Detailed view screen" />
-              </div>
-              <figcaption class="screen-caption" data-i18n="screens.card.three">Listing detail</figcaption>
-            </figure>
-            <figure class="screen-card reveal">
-              <div class="screen-shot">
-                <img src="assets/screenshots/register.png" alt="Register screen" />
-              </div>
-              <figcaption class="screen-caption" data-i18n="screens.card.four">Register & connect</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section id="trust" class="section">
-        <div class="container trust reveal">
-          <span class="eyebrow" data-i18n="trust.eyebrow">Trust and privacy</span>
-          <h2 data-i18n="trust.title">Designed for confidence and accountability.</h2>
-          <p data-i18n="trust.body">
-            PangaLeo respects your data. Listings stay organized, access is
-            controlled, and privacy protects both owners and clients.
-          </p>
-          <div class="trust-list">
-            <div class="trust-item">
-              <h3 data-i18n="trust.one.title">Purposeful data</h3>
-              <p data-i18n="trust.one.desc">We collect only what keeps properties accurate and current.</p>
-            </div>
-            <div class="trust-item">
-              <h3 data-i18n="trust.two.title">Transparent updates</h3>
-              <p data-i18n="trust.two.desc">Every property status change is intentional and visible.</p>
-            </div>
-            <div class="trust-item">
-              <h3 data-i18n="trust.three.title">Privacy-first mindset</h3>
-              <p data-i18n="trust.three.desc">Policies are clear and easy to read, with no surprises.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="container cta reveal">
-          <div>
-            <h2 data-i18n="cta.title">Download PangaLeo and start exploring homes today.</h2>
-            <p data-i18n="cta.body">
-              The app is live on Google Play with curated listings and live updates.
-            </p>
-          </div>
-          <div class="cta-actions">
-            <a
-              class="button"
-              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-              target="_blank"
-              rel="noopener"
-              data-i18n="cta.button"
-              >Download now</a
-            >
-            <div class="store-links">
-              <a
-                class="store-badge inline-flex items-center gap-3"
-                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-                target="_blank"
-                rel="noopener"
-                aria-label="Get PangaLeo on Google Play"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="#34A853" />
-                  <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="#FBBC04" />
-                  <path d="M13.3 12L3 20.3c.4.3.9.4 1.4.2l11.7-6.7-2.8-4.8z" fill="#4285F4" />
-                  <path d="M13.3 12l2.8-4.8L4.4 1.5c-.5-.3-1-.1-1.4.2L13.3 12z" fill="#EA4335" />
-                </svg>
-                <span class="store-text">
-                  <small>Get it on</small>
-                  <strong>Google Play</strong>
-                </span>
-              </a>
-              <div class="store-badge store-badge-apple is-disabled" role="status" aria-label="Apple App Store coming soon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M16.8 12.9c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-2-1.5-.2-2.9.9-3.7.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 2 2.6 3.4 2.5 1.3-.1 1.9-.9 3.5-.9 1.6 0 2.1.9 3.5.9 1.5 0 2.4-1.3 3.3-2.5 1-1.5 1.4-3 1.4-3.1-.1 0-2.8-1.1-2.8-4.2z"
-                    fill="currentColor"
-                  />
-                  <path d="M14.9 4.3c.7-.9 1.2-2.1 1.1-3.3-1 .1-2.2.7-2.9 1.6-.6.7-1.2 2-1.1 3.1 1.1.1 2.2-.6 2.9-1.4z" fill="currentColor" />
-                </svg>
-                <span class="store-text">
-                  <small>Apple App Store</small>
-                  <strong>Coming soon</strong>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <div class="brand">
-            <img src="assets/logo.png" alt="PangaLeo icon" />
-            <span>PangaLeo</span>
-          </div>
-          <p data-i18n="footer.tagline">
-            A modern property platform built for owners, clients, and confident
-            decisions.
-          </p>
-        </div>
-        <div class="footer-links">
-          <strong data-i18n="footer.company">Company</strong>
-          <a href="about.html" data-i18n="nav.about">About</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact</a>
-          <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
-        </div>
-        <div class="footer-links">
-          <strong data-i18n="footer.explore">Explore</strong>
-          <a href="#workflow" data-i18n="nav.how">How It Works</a>
-          <a href="#screens" data-i18n="nav.screens">Screens</a>
-        </div>
-        <div class="footer-links">
-          <strong data-i18n="footer.contact">Contact</strong>
+  </head>
+
+  <body>
+    <header class="site-header">
+
+      <div class="container nav-bar">
+
+        <a class="brand" href="index.html">
+
+          <img src="assets/logo.png" alt="PangaLeo icon" />
+
+          <span>PangaLeo</span>
+
+        </a>
+
+        <div class="nav-right">
+
+          <button
+
+            class="nav-toggle"
+
+            aria-expanded="false"
+
+            aria-controls="site-nav"
+
+            data-i18n="nav.menu"
+
+          >
+
+            Menu
+
+          </button>
+
+          <nav id="site-nav" class="site-nav">
+
+            <a href="about.html" data-i18n="nav.about">About</a>
+
+            <a href="index.html#workflow" data-i18n="nav.how">How It Works</a>
+
+            <a href="index.html#screens" data-i18n="nav.screens">Screens</a>
+
+            <a href="contact.html" data-i18n="nav.contact">Contact</a>
+
+            <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
+
+            <button
+
+              class="nav-cta"
+
+              type="button"
+
+              data-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+              data-i18n="nav.demo"
+
+            >
+
+              Download now
+
+            </button>
+
+          </nav>
+
+          <div class="lang-switch" role="group" aria-label="Language switch">
+
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+
+            <button class="lang-button" type="button" data-lang="sw">SW</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <div class="top-marquee">
+      <div class="container">
+        <div class="marquee" aria-label="PangaLeo categories">
+          <span data-i18n="marquee.one">Apartments</span>
+          <span data-i18n="marquee.two">Houses</span>
+          <span data-i18n="marquee.three">Rooms</span>
+          <span data-i18n="marquee.four">Event halls</span>
+          <span data-i18n="marquee.five">Hotels</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <main>
+
+      <section class="hero">
+
+        <div class="container hero-grid">
+
+          <div class="hero-content">
+
+            <span class="eyebrow" data-i18n="hero.eyebrow">For owners and clients</span>
+
+            <h1 data-i18n="hero.title">A calm property experience for owners and their clients.</h1>
+
+            <p data-i18n="hero.body">
+              PangaLeo keeps listings clear across homes, apartments, rooms, hotels,
+              event halls, and more—while giving owners real-time control of pricing,
+              availability, and media. Everything stays in one place so decisions happen
+              faster and with confidence.
+            </p>
+            <div class="hero-actions">
+
+              <a
+
+                class="button button-primary"
+
+                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+                target="_blank"
+
+                rel="noopener"
+
+                data-i18n="hero.cta_primary"
+
+                >Download now</a
+
+              >
+
+              <a class="button button-outline" href="#workflow" data-i18n="hero.cta_secondary"
+
+                >See how it works</a
+
+              >
+
+            </div>
+
+            <div class="store-links flex flex-wrap gap-3">
+
+              <a
+
+                class="store-badge inline-flex items-center gap-3"
+
+                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+                target="_blank"
+
+                rel="noopener"
+
+                aria-label="Get PangaLeo on Google Play"
+
+              >
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="#34A853" />
+
+                  <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="#FBBC04" />
+
+                  <path d="M13.3 12L3 20.3c.4.3.9.4 1.4.2l11.7-6.7-2.8-4.8z" fill="#4285F4" />
+
+                  <path d="M13.3 12l2.8-4.8L4.4 1.5c-.5-.3-1-.1-1.4.2L13.3 12z" fill="#EA4335" />
+
+                </svg>
+
+                <span class="store-text">
+
+                  <small>Get it on</small>
+
+                  <strong>Google Play</strong>
+
+                </span>
+
+              </a>
+
+              <div class="store-badge store-badge-apple is-disabled" role="status" aria-label="Apple App Store coming soon">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path
+
+                    d="M16.8 12.9c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-2-1.5-.2-2.9.9-3.7.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 2 2.6 3.4 2.5 1.3-.1 1.9-.9 3.5-.9 1.6 0 2.1.9 3.5.9 1.5 0 2.4-1.3 3.3-2.5 1-1.5 1.4-3 1.4-3.1-.1 0-2.8-1.1-2.8-4.2z"
+
+                    fill="currentColor"
+
+                  />
+
+                  <path d="M14.9 4.3c.7-.9 1.2-2.1 1.1-3.3-1 .1-2.2.7-2.9 1.6-.6.7-1.2 2-1.1 3.1 1.1.1 2.2-.6 2.9-1.4z" fill="currentColor" />
+
+                </svg>
+
+                <span class="store-text">
+
+                  <small>Apple App Store</small>
+
+                  <strong>Coming soon</strong>
+
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="stats">
+
+              <div class="stat">
+
+                <strong data-i18n="stat.one.title">Client-ready listings</strong>
+
+                <span data-i18n="stat.one.desc">Details that answer questions fast.</span>
+
+              </div>
+
+              <div class="stat">
+
+                <strong data-i18n="stat.two.title">Owner control</strong>
+
+                <span data-i18n="stat.two.desc">Availability updates in real time.</span>
+
+              </div>
+
+              <div class="stat">
+
+                <strong data-i18n="stat.three.title">Shared context</strong>
+
+                <span data-i18n="stat.three.desc">Notes that keep everyone aligned.</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div
+            class="hero-slider"
+            data-slider
+            data-slider-images="slide-1.png,slide-2.png,slide-3.png,slide-4.png"
+            data-slider-captions-en="Verified listings you can trust|Real-time price & availability updates|Clear photos and location details|Direct contact with owners & agents"
+            data-slider-captions-sw="Orodha zilizothibitishwa unazoweza kuamini|Bei na upatikanaji wa muda halisi|Picha wazi na maelezo ya eneo|Mawasiliano ya moja kwa moja na wamiliki au mawakala"
+            data-slider-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+            tabindex="0"
+            role="button"
+            aria-label="Download PangaLeo from Google Play"
+          >
+            <div class="hero-overlay" aria-hidden="true">
+              <span class="eyebrow" data-i18n="hero.eyebrow">Rental search, solved</span>
+              <h1 data-i18n="hero.title">Find the right rental faster, without the usual stress.</h1>
+            </div>
+            <div class="slider-viewport">
+              <div class="slider-track" data-slider-track></div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section id="preview" class="section">
+        <div class="container">
+
+          <div class="section-title reveal">
+
+            <div>
+
+              <span class="eyebrow" data-i18n="preview.eyebrow">Property previews</span>
+
+              <h2 data-i18n="preview.title">Showcase homes with a premium look.</h2>
+
+            </div>
+
+            <p data-i18n="preview.body">
+
+              High-quality imagery and clear details help clients move with confidence.
+
+            </p>
+
+          </div>
+
+          <div class="property-grid">
+
+            <a
+
+              class="property-link"
+
+              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+              data-app-link="intent://property/kinondoni#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
+
+            >
+
+              <article class="property-card reveal" style="--photo: url('assets/house-01.png');">
+
+                <div class="property-photo">
+
+                  <div class="property-info">
+
+                    <span class="tag" data-i18n="preview.card.one.tag">New listing</span>
+
+                    <h3 data-i18n="preview.card.one.title">Sunlit 3BR family home</h3>
+
+                    <p data-i18n="preview.card.one.meta">Dar es Salaam (Kinondoni) • From TZS 850k/mo</p>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            </a>
+
+            <a
+
+              class="property-link"
+
+              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+              data-app-link="intent://property/njiro#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
+
+            >
+
+              <article class="property-card reveal" style="--photo: url('assets/house-02.png');">
+
+                <div class="property-photo">
+
+                  <div class="property-info">
+
+                    <span class="tag" data-i18n="preview.card.two.tag">Popular</span>
+
+                    <h3 data-i18n="preview.card.two.title">Modern 2BR city apartment</h3>
+
+                    <p data-i18n="preview.card.two.meta">Arusha (Njiro) • From TZS 1.2M/mo</p>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            </a>
+
+            <a
+
+              class="property-link"
+
+              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+              data-app-link="intent://property/stonetown#Intent;scheme=pangaleo;package=pangaleo.com.pangaleo;S.browser_fallback_url=https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo;end"
+
+            >
+
+              <article class="property-card reveal" style="--photo: url('assets/house-03.png');">
+
+                <div class="property-photo">
+
+                  <div class="property-info">
+
+                    <span class="tag" data-i18n="preview.card.three.tag">Seaside</span>
+
+                    <h3 data-i18n="preview.card.three.title">Ocean-view villa retreat</h3>
+
+                    <p data-i18n="preview.card.three.meta">Zanzibar (Stone Town) • From TZS 2.5M/mo</p>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section id="why" class="section">
+        <div class="container">
+
+          <div class="section-title reveal">
+
+            <div>
+
+              <span class="eyebrow" data-i18n="why.eyebrow">Why PangaLeo</span>
+
+              <h2 data-i18n="why.title">Clarity for owners. Confidence for clients.</h2>
+
+            </div>
+
+            <p data-i18n="why.body">
+
+              Every screen keeps property facts, media, and availability aligned
+
+              so both sides feel informed.
+
+            </p>
+
+          </div>
+
+          <div class="card-grid">
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.one.title">Client-ready listings</h3>
+
+              <p data-i18n="feature.one.desc">
+
+                A clean presentation of price, amenities, and media for quick
+
+                comparisons.
+
+              </p>
+
+            </div>
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.two.title">Owner control panel</h3>
+
+              <p data-i18n="feature.two.desc">
+
+                Update pricing and occupancy instantly without scattered tools.
+
+              </p>
+
+            </div>
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.three.title">Trusted collaboration</h3>
+
+              <p data-i18n="feature.three.desc">
+
+                Comments and notes stay with each property so owners, agents,
+
+                and teams stay aligned.
+
+              </p>
+
+            </div>
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.four.title">Location clarity</h3>
+
+              <p data-i18n="feature.four.desc">
+
+                Regions, districts, and ward details are structured for fast
+
+                discovery.
+
+              </p>
+
+            </div>
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.five.title">Media that builds trust</h3>
+
+              <p data-i18n="feature.five.desc">
+
+                Image galleries and video previews keep clients confident in
+
+                what they see.
+
+              </p>
+
+            </div>
+
+            <div class="card reveal">
+
+              <h3 data-i18n="feature.six.title">Mobile-first performance</h3>
+
+              <p data-i18n="feature.six.desc">
+
+                Designed with Flutter for smooth, responsive experiences on the
+
+                go.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section id="workflow" class="section">
+        <div class="container">
+
+          <div class="section-title reveal">
+
+            <div>
+
+              <span class="eyebrow" data-i18n="workflow.eyebrow">Workflow</span>
+
+              <h2 data-i18n="workflow.title">From owner upload to client decision.</h2>
+
+            </div>
+
+            <p data-i18n="workflow.body">
+
+              A simple flow that supports owners, teams, and clients in the same
+
+              workspace.
+
+            </p>
+
+          </div>
+
+          <div class="steps">
+
+            <div class="step reveal">
+
+              <span>1</span>
+
+              <h3 data-i18n="step.one.title">Owners publish</h3>
+
+              <p data-i18n="step.one.desc">
+
+                Capture pricing, category, amenities, and location details with
+
+                clarity.
+
+              </p>
+
+            </div>
+
+            <div class="step reveal">
+
+              <span>2</span>
+
+              <h3 data-i18n="step.two.title">Clients explore</h3>
+
+              <p data-i18n="step.two.desc">
+
+                Portrait-first screens make listings easy to scan and compare.
+
+              </p>
+
+            </div>
+
+            <div class="step reveal">
+
+              <span>3</span>
+
+              <h3 data-i18n="step.three.title">Teams close</h3>
+
+              <p data-i18n="step.three.desc">
+
+                Live status and notes keep owners and clients aligned through
+
+                the lease.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section id="screens" class="section">
+        <div class="container">
+
+          <div class="section-title reveal">
+
+            <div>
+
+              <span class="eyebrow" data-i18n="screens.eyebrow">Tenant journey</span>
+
+              <h2 data-i18n="screens.title">A welcome journey for tenants to find their home.</h2>
+
+            </div>
+
+            <p data-i18n="screens.body">
+
+              Tenants can browse, compare, and move forward with confidence
+
+              through a clean portrait-first experience.
+
+            </p>
+
+          </div>
+
+          <div class="screens">
+
+            <figure class="screen-card reveal">
+
+              <div class="screen-shot">
+
+                <img src="assets/screenshots/home.png" alt="Home screen" />
+
+              </div>
+
+              <figcaption class="screen-caption" data-i18n="screens.card.one">Home discovery</figcaption>
+
+            </figure>
+
+            <figure class="screen-card reveal">
+
+              <div class="screen-shot">
+
+                <img src="assets/screenshots/client%20view.png" alt="Client view screen" />
+
+              </div>
+
+              <figcaption class="screen-caption" data-i18n="screens.card.two">Client browse</figcaption>
+
+            </figure>
+
+            <figure class="screen-card reveal">
+
+              <div class="screen-shot">
+
+                <img src="assets/screenshots/detailed%20view.png" alt="Detailed view screen" />
+
+              </div>
+
+              <figcaption class="screen-caption" data-i18n="screens.card.three">Listing detail</figcaption>
+
+            </figure>
+
+            <figure class="screen-card reveal">
+
+              <div class="screen-shot">
+
+                <img src="assets/screenshots/register.png" alt="Register screen" />
+
+              </div>
+
+              <figcaption class="screen-caption" data-i18n="screens.card.four">Register & connect</figcaption>
+
+            </figure>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section id="trust" class="section">
+        <div class="container trust reveal">
+
+          <span class="eyebrow" data-i18n="trust.eyebrow">Trust and privacy</span>
+
+          <h2 data-i18n="trust.title">Designed for confidence and accountability.</h2>
+
+          <p data-i18n="trust.body">
+
+            PangaLeo respects your data. Listings stay organized, access is
+
+            controlled, and privacy protects both owners and clients.
+
+          </p>
+
+          <div class="trust-list">
+
+            <div class="trust-item">
+
+              <h3 data-i18n="trust.one.title">Purposeful data</h3>
+
+              <p data-i18n="trust.one.desc">We collect only what keeps properties accurate and current.</p>
+
+            </div>
+
+            <div class="trust-item">
+
+              <h3 data-i18n="trust.two.title">Transparent updates</h3>
+
+              <p data-i18n="trust.two.desc">Every property status change is intentional and visible.</p>
+
+            </div>
+
+            <div class="trust-item">
+
+              <h3 data-i18n="trust.three.title">Privacy-first mindset</h3>
+
+              <p data-i18n="trust.three.desc">Policies are clear and easy to read, with no surprises.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="section">
+        <div class="container cta reveal">
+
+          <div>
+
+            <h2 data-i18n="cta.title">Download PangaLeo and start exploring homes today.</h2>
+
+            <p data-i18n="cta.body">
+
+              The app is live on Google Play with curated listings and live updates.
+
+            </p>
+
+          </div>
+
+          <div class="cta-actions">
+
+            <a
+
+              class="button"
+
+              href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+              target="_blank"
+
+              rel="noopener"
+
+              data-i18n="cta.button"
+
+              >Download now</a
+
+            >
+
+            <div class="store-links">
+
+              <a
+
+                class="store-badge inline-flex items-center gap-3"
+
+                href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+
+                target="_blank"
+
+                rel="noopener"
+
+                aria-label="Get PangaLeo on Google Play"
+
+              >
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="#34A853" />
+
+                  <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="#FBBC04" />
+
+                  <path d="M13.3 12L3 20.3c.4.3.9.4 1.4.2l11.7-6.7-2.8-4.8z" fill="#4285F4" />
+
+                  <path d="M13.3 12l2.8-4.8L4.4 1.5c-.5-.3-1-.1-1.4.2L13.3 12z" fill="#EA4335" />
+
+                </svg>
+
+                <span class="store-text">
+
+                  <small>Get it on</small>
+
+                  <strong>Google Play</strong>
+
+                </span>
+
+              </a>
+
+              <div class="store-badge store-badge-apple is-disabled" role="status" aria-label="Apple App Store coming soon">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                  <path
+
+                    d="M16.8 12.9c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.6-2-1.5-.2-2.9.9-3.7.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.1 2.5-1.8 3.1-.5 7.6 1.3 10.1.9 1.2 2 2.6 3.4 2.5 1.3-.1 1.9-.9 3.5-.9 1.6 0 2.1.9 3.5.9 1.5 0 2.4-1.3 3.3-2.5 1-1.5 1.4-3 1.4-3.1-.1 0-2.8-1.1-2.8-4.2z"
+
+                    fill="currentColor"
+
+                  />
+
+                  <path d="M14.9 4.3c.7-.9 1.2-2.1 1.1-3.3-1 .1-2.2.7-2.9 1.6-.6.7-1.2 2-1.1 3.1 1.1.1 2.2-.6 2.9-1.4z" fill="currentColor" />
+
+                </svg>
+
+                <span class="store-text">
+
+                  <small>Apple App Store</small>
+
+                  <strong>Coming soon</strong>
+
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+    <footer class="site-footer">
+
+      <div class="container footer-grid">
+
+        <div>
+
+          <div class="brand">
+
+            <img src="assets/logo.png" alt="PangaLeo icon" />
+
+            <span>PangaLeo</span>
+
+          </div>
+
+          <p data-i18n="footer.tagline">
+
+            A modern property platform built for owners, clients, and confident
+
+            decisions.
+
+          </p>
+
+        </div>
+
+        <div class="footer-links">
+
+          <strong data-i18n="footer.company">Company</strong>
+
+          <a href="about.html" data-i18n="nav.about">About</a>
+
+          <a href="contact.html" data-i18n="nav.contact">Contact</a>
+
+          <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
+
+        </div>
+
+        <div class="footer-links">
+
+          <strong data-i18n="footer.explore">Explore</strong>
+
+          <a href="#workflow" data-i18n="nav.how">How It Works</a>
+
+          <a href="#screens" data-i18n="nav.screens">Screens</a>
+
+        </div>
+
+        <div class="footer-links">
+
+          <strong data-i18n="footer.contact">Contact</strong>
+
           <a href="mailto:leonardjohanes964@gmail.com" data-email-link>
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.2-.5 6.8 5.2 6.8-5.2H5.2z" fill="currentColor" />
@@ -455,13 +888,20 @@
             </svg>
             <span data-i18n="footer.email">Email us</span>
           </a>
-          <a href="https://wa.me/255616662315" target="_blank" rel="noopener" data-whatsapp="255616662315">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
-              <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
-            </svg>
-            <span data-i18n="footer.whatsapp">WhatsApp</span>
-          </a>
+          <a href="https://wa.me/255616662315" target="_blank" rel="noopener" data-whatsapp="255616662315">
+
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+              <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
+
+              <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
+
+            </svg>
+
+            <span data-i18n="footer.whatsapp">WhatsApp</span>
+
+          </a>
+
           <a href="tel:0616662315">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M7.5 3h2.1c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.3 1.1l-1 1c.6 1.2 1.6 2.3 2.8 3l1-1c.3-.3.7-.4 1.1-.3l3 .8c.5.1.8.5.8 1v2.1c0 .6-.5 1-1.1 1-7.1 0-12.9-5.8-12.9-12.9 0-.6.4-1.1 1-1.1z" fill="currentColor" />
@@ -496,45 +936,82 @@
             href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
             target="_blank"
             rel="noopener"
-          >
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="currentColor" />
-              <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="currentColor" />
-            </svg>
-            <span data-i18n="footer.download">Download now</span>
-          </a>
-        </div>
-      </div>
-      <div class="container footer-meta">
-        <small>
-          <span data-i18n="footer.copy_prefix">©</span>
-          <span data-year></span>
-          <span data-i18n="footer.copy_suffix">PangaLeo. All rights reserved.</span>
-        </small>
-        <small>Developed by <a href="https://kachehub.com" target="_blank" rel="noopener">kachehub.com</a></small>
-      </div>
-    </footer>
-
-    <div class="floating-actions">
-      <a
-        class="whatsapp"
-        href="https://wa.me/255616662315"
-        target="_blank"
-        rel="noopener"
-        data-whatsapp="255616662315"
-        aria-label="Chat on WhatsApp"
-      >
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
-          <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
-        </svg>
-      </a>
+          >
+
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+              <path d="M3 3.7c-.3.3-.5.7-.5 1.2v14.2c0 .5.2.9.5 1.2L12.5 12 3 3.7z" fill="currentColor" />
+
+              <path d="M13.3 12l3.1 3.1 4.8-2.8c.6-.3.6-1.1 0-1.4l-4.8-2.8-3.1 3.1z" fill="currentColor" />
+
+            </svg>
+
+            <span data-i18n="footer.download">Download now</span>
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="container footer-meta">
+
+        <small>
+
+          <span data-i18n="footer.copy_prefix">©</span>
+
+          <span data-year></span>
+
+          <span data-i18n="footer.copy_suffix">PangaLeo. All rights reserved.</span>
+
+        </small>
+
+        <small>Developed by <a href="https://kachehub.com" target="_blank" rel="noopener">kachehub.com</a></small>
+
+      </div>
+
+    </footer>
+
+
+
+    <div class="floating-actions">
+
+      <a
+
+        class="whatsapp"
+
+        href="https://wa.me/255616662315"
+
+        target="_blank"
+
+        rel="noopener"
+
+        data-whatsapp="255616662315"
+
+        aria-label="Chat on WhatsApp"
+
+      >
+
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+
+          <path d="M12 3a8.5 8.5 0 0 0-7.3 12.8L4 20.8l5-1.3A8.5 8.5 0 1 0 12 3z" fill="currentColor" />
+
+          <path d="M9.7 8.4c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.1 3c.2.2 2.1 3.3 5.2 4.5 2.6 1 3.1.8 3.6.8s1.6-.6 1.8-1.2c.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.6-.3l-2-.9c-.3-.1-.5-.1-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.9-1.7-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-.9-2.1z" fill="#ffffff" />
+
+        </svg>
+
+      </a>
+
       <a class="email" href="mailto:leonardjohanes964@gmail.com" data-email-link aria-label="Email us">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11zm2.2-.5 6.8 5.2 6.8-5.2H5.2z" fill="currentColor" />
           <path d="M5 8.8V17a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8.8l-6.1 4.7a2 2 0 0 1-2.4 0L5 8.8z" fill="currentColor" />
         </svg>
-      </a>
-    </div>
-  </body>
-</html>
+      </a>
+
+    </div>
+
+  </body>
+
+</html>
+

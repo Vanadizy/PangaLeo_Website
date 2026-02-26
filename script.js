@@ -88,8 +88,8 @@ if (slider) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (track && images.length) {
-    const shuffled = [...images].sort(() => Math.random() - 0.5);
-    const slides = shuffled.map((filename, index) => {
+    const ordered = [...images];
+    const slides = ordered.map((filename, index) => {
       const img = new Image();
       const src = filename.includes('/') ? filename : `assets/sliders/${filename}`;
       img.src = src;
@@ -110,7 +110,7 @@ if (slider) {
 
     let captions = makeCaptions('sw');
     if (!captions.length) captions = makeCaptions('en');
-    if (!captions.length) captions = shuffled.map(() => 'PangaLeo rental highlight');
+    if (!captions.length) captions = ordered.map(() => 'PangaLeo rental highlight');
 
     const captionElements = captions.map((text, index) => {
       const caption = document.createElement('div');
@@ -120,6 +120,15 @@ if (slider) {
       return caption;
     });
 
+    const overlay = slider.querySelector('.hero-overlay p');
+    const updateOverlay = (index) => {
+      if (!overlay) return;
+      const text = captionElements[index]?.textContent || captions[index % captions.length] || '';
+      overlay.textContent = text;
+    };
+
+    updateOverlay(0);
+
     if (!prefersReducedMotion && slides.length > 1) {
       let current = 0;
       setInterval(() => {
@@ -128,12 +137,17 @@ if (slider) {
         current = (current + 1) % slides.length;
         slides[current].classList.add('is-active');
         if (captionElements[current]) captionElements[current].classList.add('is-active');
+        updateOverlay(current);
+        slider.sliderIndex = current;
       }, 4500);
     }
 
     slider.sliderCaptions = captionElements;
     slider.sliderMakeCaptions = makeCaptions;
     slider.sliderSlides = slides;
+    slider.sliderOverlay = overlay;
+    slider.sliderUpdateOverlay = updateOverlay;
+    slider.sliderIndex = 0;
   }
 
   const sliderLink = slider.getAttribute('data-slider-link');
@@ -311,6 +325,7 @@ const translations = {
     'marquee.five': 'Hotels',
     'hero.eyebrow': 'Rental search, solved',
     'hero.title': 'Find the right rental faster, without the usual stress.',
+    'hero.image_caption': 'Direct connection with owners and agents.',
     'hero.body':
       'PangaLeo removes the friction of finding places to rent. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
     'hero.body_extra':
@@ -525,6 +540,7 @@ const translations = {
     'marquee.five': 'Hoteli',
     'hero.eyebrow': 'Matatizo ya kutafuta nyumba basi',
     'hero.title': 'Tafuta nyumba, chumba, apartimenti, hoteli, ukumbi kwa haraka kabisa kidigitali.',
+    'hero.image_caption': 'Mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body':
       'PangaLeo inaondoa changamoto za kutafuta maeneo ya kupanga. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body_extra':
@@ -830,6 +846,10 @@ const applyTranslations = (lang) => {
         caption.textContent = updatedCaptions[index % updatedCaptions.length];
       });
     }
+  }
+
+  if (slider && slider.sliderOverlay && slider.sliderUpdateOverlay) {
+    slider.sliderUpdateOverlay(slider.sliderIndex || 0);
   }
 
   updateWhatsAppLinks();

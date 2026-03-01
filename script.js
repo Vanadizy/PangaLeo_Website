@@ -317,6 +317,7 @@ const translations = {
     'nav.screens': 'Tenant Journey',
     'nav.contact': 'Contact',
     'nav.privacy': 'Privacy Policy',
+    'nav.terms': 'Terms',
     'nav.demo': 'Download now',
     'marquee.one': 'Apartments',
     'marquee.two': 'Houses',
@@ -522,7 +523,28 @@ const translations = {
     'privacy.changes.body':
       'We may update this policy to reflect changes in our practices. When we do, the updated date at the top will change.',
     'privacy.contact.title': 'Contact',
-    'privacy.contact.body': 'If you have questions about privacy or data handling, reach out at'
+    'privacy.contact.body': 'If you have questions about privacy or data handling, reach out at',
+    'terms.eyebrow': 'Terms & Conditions',
+    'terms.title': 'Terms that keep everyone protected and informed.',
+    'terms.updated': 'Last updated: February 17, 2026.',
+    'terms.acceptance.title': '1. Acceptance of Terms',
+    'terms.acceptance.body':
+      'By accessing and using PangaLeo, you accept and agree to be bound by these terms and all applicable laws.',
+    'terms.license.title': '2. Use License',
+    'terms.license.body':
+      'Permission is granted to temporarily use PangaLeo for personal, non-commercial viewing only.',
+    'terms.responsibilities.title': '3. User Responsibilities',
+    'terms.responsibilities.body':
+      'You are responsible for maintaining the confidentiality of your account details and for all activity that occurs under your account.',
+    'terms.prohibited.title': '4. Prohibited Uses',
+    'terms.prohibited.body':
+      'You may not use the service for any illegal or unauthorized purpose, or to violate any laws in your jurisdiction.',
+    'terms.availability.title': '5. Service Availability',
+    'terms.availability.body':
+      'We reserve the right to modify, suspend, or discontinue the service at any time without notice.',
+    'terms.contact.title': '6. Contact Information',
+    'terms.contact.body':
+      'Questions about these Terms & Conditions should be sent to'
   },
   sw: {
     'nav.menu': 'Menyu',
@@ -532,6 +554,7 @@ const translations = {
     'nav.screens': 'Safari ya mpangaji',
     'nav.contact': 'Wasiliana',
     'nav.privacy': 'Sera ya Faragha',
+    'nav.terms': 'Masharti',
     'nav.demo': 'Pakua sasa',
     'marquee.one': 'Apartimenti',
     'marquee.two': 'Nyumba',
@@ -738,7 +761,28 @@ const translations = {
     'privacy.changes.body':
       'Tunaweza kusasisha sera hii kulingana na mabadiliko ya utendaji. Tarehe ya juu itabadilika kila tunapoboresha.',
     'privacy.contact.title': 'Wasiliana',
-    'privacy.contact.body': 'Kwa maswali kuhusu faragha au matumizi ya data, wasiliana kupitia'
+    'privacy.contact.body': 'Kwa maswali kuhusu faragha au matumizi ya data, wasiliana kupitia',
+    'terms.eyebrow': 'Masharti na Vigezo',
+    'terms.title': 'Masharti yanayoweka ulinzi na uwazi kwa kila mmoja.',
+    'terms.updated': 'Imesasishwa mwisho: Februari 17, 2026.',
+    'terms.acceptance.title': '1. Kukubali Masharti',
+    'terms.acceptance.body':
+      'Kwa kutumia PangaLeo, unakubali masharti haya na sheria zinazotumika.',
+    'terms.license.title': '2. Leseni ya Matumizi',
+    'terms.license.body':
+      'Unaruhusiwa kutumia PangaLeo kwa matumizi binafsi na yasiyo ya kibiashara kwa muda mfupi.',
+    'terms.responsibilities.title': '3. Wajibu wa Mtumiaji',
+    'terms.responsibilities.body':
+      'Una wajibu wa kulinda taarifa za akaunti yako na shughuli zote zinazofanywa kupitia akaunti yako.',
+    'terms.prohibited.title': '4. Matumizi Yanayokatazwa',
+    'terms.prohibited.body':
+      'Huruhusiwi kutumia huduma kwa madhumuni haramu au kukiuka sheria za mamlaka yako.',
+    'terms.availability.title': '5. Upatikanaji wa Huduma',
+    'terms.availability.body':
+      'Tuna haki ya kubadilisha, kusimamisha, au kuondoa huduma wakati wowote bila taarifa.',
+    'terms.contact.title': '6. Taarifa za Mawasiliano',
+    'terms.contact.body':
+      'Maswali kuhusu Masharti na Vigezo haya yatumwe kupitia'
   }
 };
 
@@ -749,7 +793,7 @@ const browserLang = navigator.language ? navigator.language.slice(0, 2) : 'en';
 const initialLang = translations[storedLang] ? storedLang : 'sw';
 let currentLang = initialLang;
 
-const CONTACT_EMAIL = 'leonardjohanes964@gmail.com';
+const CONTACT_EMAIL = 'pangaleoapp@gmail.com';
 
 const getTranslation = (key) => {
   const fromCurrent = translations[currentLang] && translations[currentLang][key];

@@ -367,17 +367,17 @@ main > section.section:nth-of-type(even) {
 }
 
 #screens .screen-card {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+  background: transparent;
+  border: none;
+  box-shadow: none;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 0;
 }
 
 #screens .screen-shot {
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  background: #ffffff;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+  border: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 #screens .screen-caption {
@@ -827,11 +827,16 @@ main > section.section:nth-of-type(even) {
   border-radius: var(--radius-md);
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background-image: var(--photo, none);
   background-color: rgba(27, 108, 240, 0.18);
-  background-size: cover;
-  background-position: center;
   border: 1px solid var(--line);
+}
+
+.property-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .property-photo::after {
@@ -1005,18 +1010,17 @@ main > section.section:nth-of-type(even) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  justify-items: center;
+  justify-items: stretch;
 }
 
 .screen-card {
   width: 100%;
-  max-width: 280px;
   margin: 0;
-  padding: 16px;
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: 0 10px 20px rgba(15, 20, 25, 0.08);
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
   display: grid;
   gap: 14px;
   text-align: center;
@@ -1024,25 +1028,24 @@ main > section.section:nth-of-type(even) {
 }
 
 .screen-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow);
+  transform: none;
+  box-shadow: none;
 }
 
 .screen-shot {
-  aspect-ratio: 9 / 16;
   width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #f2f6f4;
-  border: 1px solid var(--line);
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  border: none;
   position: relative;
 }
 
 .screen-shot img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: floatY 7s ease-in-out infinite;
+  height: auto;
+  object-fit: contain;
+  animation: none;
 }
 
 .screen-caption {
@@ -1717,7 +1720,7 @@ main > section.section:nth-of-type(even) {
   }
 
   .screen-card {
-    border-radius: 10px;
+    border-radius: 0;
   }
 
 
@@ -1793,8 +1796,8 @@ main > section.section:nth-of-type(even) {
     flex: 0 0 100%;
     max-width: 100%;
     scroll-snap-align: start;
-    padding: 16px;
-    border-radius: 20px;
+    padding: 0;
+    border-radius: 0;
   }
 
   .screens::-webkit-scrollbar {

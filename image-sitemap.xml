@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://pangaleo.co.tz/</loc>
+    <image:image>
+      <image:loc>https://pangaleo.co.tz/assets/house-01.png</image:loc>
+      <image:caption>Nyumba ya kupanga ya vyumba 3 yenye mwanga, Dar es Salaam (Kinondoni)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pangaleo.co.tz/assets/house-02.png</image:loc>
+      <image:caption>Apartimenti ya kupanga ya vyumba 2 mjini, Arusha (Njiro)</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://pangaleo.co.tz/assets/house-03.png</image:loc>
+      <image:caption>Villa ya kupanga yenye mwonekano wa bahari, Zanzibar (Stone Town)</image:caption>
+    </image:image>
+  </url>
+</urlset>

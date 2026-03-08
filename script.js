@@ -325,10 +325,10 @@ const translations = {
     'marquee.four': 'Event halls',
     'marquee.five': 'Hotels',
     'hero.eyebrow': 'Rental search, solved',
-    'hero.title': 'Find the right rental faster, without the usual stress.',
+    'hero.title': 'Find the right rental faster — nyumba za kupanga, apartments, rooms, and more.',
     'hero.image_caption': 'Direct connection with owners and agents.',
     'hero.body':
-      'PangaLeo removes the friction of finding places to rent. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
+      'PangaLeo removes the friction of finding nyumba za kupanga and other rentals. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
     'hero.body_extra':
       'From verified photos to live availability updates, PangaLeo keeps every step organized so tenants can compare options quickly and owners stay in full control.',
     'hero.cta_primary': 'Download now',
@@ -562,10 +562,10 @@ const translations = {
     'marquee.four': 'Kumbi za matukio',
     'marquee.five': 'Hoteli',
     'hero.eyebrow': 'Matatizo ya kutafuta nyumba basi',
-    'hero.title': 'Tafuta nyumba, chumba, apartimenti, hoteli, ukumbi kwa haraka kabisa kidigitali.',
+    'hero.title': 'Tafuta nyumba za kupanga, vyumba, apartimenti, hoteli, na kumbi kwa haraka kabisa kidigitali.',
     'hero.image_caption': 'Mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body':
-      'PangaLeo inaondoa changamoto za kutafuta maeneo ya kupanga. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
+      'PangaLeo inaondoa changamoto za kutafuta nyumba za kupanga na maeneo mengine ya kupangisha. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body_extra':
       'Kuanzia picha zilizothibitishwa hadi sasisho la upatikanaji wa muda halisi, PangaLeo huweka kila hatua kuwa wazi ili wapangaji walenge chaguo sahihi kwa haraka.',
     'hero.cta_primary': 'Pakua sasa',

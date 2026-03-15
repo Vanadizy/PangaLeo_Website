@@ -1,16 +1,27 @@
-﻿const navToggle = document.querySelector('.nav-toggle');
+const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
+const langSwitch = document.querySelector('.lang-switch');
+const langToggle = document.querySelector('.lang-toggle');
+const langMenu = document.querySelector('.lang-menu');
+
+const closeNav = () => {
+  if (!nav || !navToggle) return;
+  nav.classList.remove('is-open');
+  navToggle.setAttribute('aria-expanded', 'false');
+};
+
+const closeLangMenu = () => {
+  if (!langSwitch || !langToggle) return;
+  langSwitch.classList.remove('is-open');
+  langToggle.setAttribute('aria-expanded', 'false');
+};
 
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
+    closeLangMenu();
     const isOpen = nav.classList.toggle('is-open');
     navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
-
-  const closeNav = () => {
-    nav.classList.remove('is-open');
-    navToggle.setAttribute('aria-expanded', 'false');
-  };
 
   nav.querySelectorAll('a, button').forEach((item) => {
     item.addEventListener('click', () => {
@@ -20,8 +31,56 @@ if (navToggle && nav) {
   });
 }
 
-let revealObserver = null;
+if (langToggle && langSwitch && langMenu) {
+  langToggle.addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeNav();
+    const isOpen = langSwitch.classList.toggle('is-open');
+    langToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
 
+  document.addEventListener('click', (event) => {
+    if (!langSwitch.contains(event.target)) {
+      closeLangMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeLangMenu();
+    }
+  });
+}
+
+const loader = document.querySelector('.page-loader');
+if (loader) {
+  const minShowTime = 400;
+  const maxWaitTime = 6000;
+  const startTime = Date.now();
+  let done = false;
+
+  const finishLoading = () => {
+    if (done) return;
+    done = true;
+    const elapsed = Date.now() - startTime;
+    const delay = Math.max(0, minShowTime - elapsed);
+    setTimeout(() => {
+      document.body.classList.remove('is-loading');
+      loader.classList.add('is-hidden');
+    }, delay);
+  };
+
+  setTimeout(finishLoading, maxWaitTime);
+
+  if (document.readyState === 'complete') {
+    finishLoading();
+  } else {
+    window.addEventListener('load', finishLoading);
+  }
+} else {
+  document.body.classList.remove('is-loading');
+}
+let revealObserver = null;
 const observeRevealItems = (items) => {
   if (!items || !items.length) return;
   if ('IntersectionObserver' in window) {
@@ -318,7 +377,7 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.privacy': 'Privacy Policy',
     'nav.terms': 'Terms',
-    'nav.demo': 'Download now',
+    'nav.demo': 'Download',
     'nav.account': 'Web App',
     'marquee.one': 'Apartments',
     'marquee.two': 'Houses',
@@ -326,10 +385,10 @@ const translations = {
     'marquee.four': 'Event halls',
     'marquee.five': 'Hotels',
     'hero.eyebrow': 'Rental search, solved',
-    'hero.title': 'Find the right rental faster — nyumba za kupanga, apartments, rooms, and more.',
+    'hero.title': 'Find the right rental faster for nyumba za kupanga, apartments, rooms, and more.',
     'hero.image_caption': 'Direct connection with owners and agents.',
     'hero.body':
-      'PangaLeo removes the friction of finding nyumba za kupanga and other rentals. Verified listings for homes, apartments, rooms, hotels, event halls, and more — with clear photos, real-time pricing, and direct contact with owners and agents.',
+      'PangaLeo removes the friction of finding nyumba za kupanga and other rentals. Verified listings for homes, apartments, rooms, hotels, event halls, and more with clear photos, real-time pricing, and direct contact with owners and agents.',
     'hero.body_extra':
       'From verified photos to live availability updates, PangaLeo keeps every step organized so tenants can compare options quickly and owners stay in full control.',
     'hero.cta_primary': 'Download now',
@@ -366,13 +425,13 @@ const translations = {
     'preview.body_extra':
       'Each listing highlights price, location, and amenities at a glance so clients can decide faster without endless back-and-forth.',
     'preview.card.one.title': 'Sunlit 3BR family home',
-    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) • From TZS 850k/mo',
+    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) � From TZS 850k/mo',
     'preview.card.two.tag': 'Popular',
     'preview.card.two.title': 'Modern 2BR city apartment',
-    'preview.card.two.meta': 'Arusha (Njiro) • From TZS 1.2M/mo',
+    'preview.card.two.meta': 'Arusha (Njiro) � From TZS 1.2M/mo',
     'preview.card.three.tag': 'Seaside',
     'preview.card.three.title': 'Ocean-view villa retreat',
-    'preview.card.three.meta': 'Zanzibar (Stone Town) • From TZS 2.5M/mo',
+    'preview.card.three.meta': 'Zanzibar (Stone Town) � From TZS 2.5M/mo',
     'why.eyebrow': 'Why PangaLeo',
     'why.title': 'Clarity for owners. Confidence for clients.',
     'why.body':
@@ -452,7 +511,7 @@ const translations = {
     'form.status.success': 'Message sent. We will reply soon.',
     'form.status.fail': 'Message failed. Please try again.',
     'form.status.missing': 'Email service not configured yet.',
-    'footer.copy_prefix': '©',
+    'footer.copy_prefix': '(c)',
     'footer.copy_suffix': 'PangaLeo. All rights reserved.',
     'about.eyebrow': 'About PangaLeo',
     'about.title': 'Built for owners and the clients they serve.',
@@ -486,6 +545,24 @@ const translations = {
     'contact.form.company': 'Company or portfolio',
     'contact.form.message': 'Tell us what you need',
     'contact.form.button': 'Send message',
+    'download.eyebrow': 'Download options',
+    'download.title': 'Choose how you want to use PangaLeo.',
+    'download.body': 'Download on Android, open the web app, or get ready for iOS.',
+    'download.options.eyebrow': 'Platforms',
+    'download.options.title': 'Pick your platform.',
+    'download.options.body': 'Each option gives you access to the same listings and account.',
+    'download.ios.title': 'iOS App',
+    'download.ios.body':
+      "We're preparing the iOS release. For now, use the web app on iPhone or iPad.",
+    'download.ios.button': 'Coming soon',
+    'download.ios.fallback': 'Use Web App',
+    'download.android.title': 'Android App',
+    'download.android.body':
+      'Get the latest PangaLeo app with verified listings, updates, and notifications.',
+    'download.android.button': 'Open Google Play',
+    'download.web.title': 'Web App',
+    'download.web.body': 'Use PangaLeo in any browser with the same listings and account access.',
+    'download.web.button': 'Open Web App',
     'privacy.eyebrow': 'Privacy Policy',
     'privacy.title': 'Privacy that is clear, calm, and transparent.',
     'privacy.updated': 'Last updated: February 17, 2026.',
@@ -560,8 +637,8 @@ const translations = {
     'nav.contact': 'Wasiliana',
     'nav.privacy': 'Sera ya Faragha',
     'nav.terms': 'Masharti',
-    'nav.demo': 'Pakua sasa',
-    'nav.account': 'Web App',
+    'nav.demo': 'Pakua',
+    'nav.account': 'Tovuti',
     'marquee.one': 'Apartimenti',
     'marquee.two': 'Nyumba',
     'marquee.three': 'Vyumba',
@@ -571,7 +648,7 @@ const translations = {
     'hero.title': 'Tafuta nyumba za kupanga, vyumba, apartimenti, hoteli, na kumbi kwa haraka kabisa kidigitali.',
     'hero.image_caption': 'Mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body':
-      'PangaLeo inaondoa changamoto za kutafuta nyumba za kupanga na maeneo mengine ya kupangisha. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi — pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
+      'PangaLeo inaondoa changamoto za kutafuta nyumba za kupanga na maeneo mengine ya kupangisha. Orodha zilizothibitishwa za nyumba, apartimenti, vyumba, hoteli, kumbi za matukio na zaidi pamoja na picha wazi, bei na upatikanaji wa muda halisi, na mawasiliano ya moja kwa moja na wamiliki au mawakala.',
     'hero.body_extra':
       'Kuanzia picha zilizothibitishwa hadi sasisho la upatikanaji wa muda halisi, PangaLeo huweka kila hatua kuwa wazi ili wapangaji walenge chaguo sahihi kwa haraka.',
     'hero.cta_primary': 'Pakua sasa',
@@ -672,7 +749,7 @@ const translations = {
     'cta.body': 'Programu ipo Google Play ikiwa na orodha zilizoratibiwa na sasisho za moja kwa moja.',
     'cta.button': 'Pakua sasa',
     'store.webapp_small': 'Fungua',
-    'store.webapp': 'Programu ya Wavuti',
+    'store.webapp': 'Tovuti',
     'footer.tagline': 'Jukwaa la kisasa la mali lililojengwa kwa wamiliki, wateja, na maamuzi yenye ujasiri.',
     'footer.company': 'Kampuni',
     'footer.explore': 'Gundua',
@@ -681,8 +758,8 @@ const translations = {
     'footer.whatsapp': 'WhatsApp',
     'footer.phone': 'Piga simu',
     'footer.download': 'Pakua sasa',
-    'footer.account': 'Web App',
-    'footer.webapp': 'Programu ya Wavuti',
+    'footer.account': 'Tovuti',
+    'footer.webapp': 'Tovuti',
     'email.subject': 'Ombi la taarifa - PangaLeo',
     'email.body': 'Habari timu ya PangaLeo,\nNingependa kupata taarifa zaidi kuhusu PangaLeo.\n',
     'contact.email.title': 'Tuma barua pepe kwa timu ya PangaLeo',
@@ -695,7 +772,7 @@ const translations = {
     'form.status.success': 'Ujumbe umetumwa. Tutakujibu hivi karibuni.',
     'form.status.fail': 'Ujumbe haukutumwa. Tafadhali jaribu tena.',
     'form.status.missing': 'Huduma ya barua pepe haijawekwa bado.',
-    'footer.copy_prefix': '©',
+    'footer.copy_prefix': '(c)',
     'footer.copy_suffix': 'PangaLeo. Haki zote zimehifadhiwa.',
     'about.eyebrow': 'Kuhusu PangaLeo',
     'about.title': 'Imejengwa kwa wamiliki na wateja wanaowahudumia.',
@@ -729,6 +806,24 @@ const translations = {
     'contact.form.company': 'Kampuni au portfolio',
     'contact.form.message': 'Tuambie unachohitaji',
     'contact.form.button': 'Tuma ujumbe',
+    'download.eyebrow': 'Chaguo za kupakua',
+    'download.title': 'Chagua jinsi ya kutumia PangaLeo.',
+    'download.body': 'Pakua Android, tumia web app, au jiandae kwa iOS.',
+    'download.options.eyebrow': 'Mifumo',
+    'download.options.title': 'Chagua mfumo wako.',
+    'download.options.body': 'Kila chaguo kinakupa orodha na akaunti ile ile.',
+    'download.ios.title': 'Programu ya iOS',
+    'download.ios.body':
+      'Tunajiandaa kutoa iOS. Kwa sasa, tumia web app kwenye iPhone au iPad.',
+    'download.ios.button': 'Inakuja hivi karibuni',
+    'download.ios.fallback': 'Tumia Tovuti',
+    'download.android.title': 'Programu ya Android',
+    'download.android.body':
+      'Pata PangaLeo yenye orodha zilizothibitishwa, masasisho, na arifa.',
+    'download.android.button': 'Fungua Google Play',
+    'download.web.title': 'Tovuti',
+    'download.web.body': 'Tumia PangaLeo kwenye kivinjari chochote na akaunti ile ile.',
+    'download.web.button': 'Fungua Tovuti',
     'privacy.eyebrow': 'Sera ya Faragha',
     'privacy.title': 'Faragha iliyo wazi, tulivu, na yenye uwazi.',
     'privacy.updated': 'Imesasishwa mwisho: Februari 17, 2026.',
@@ -927,5 +1022,17 @@ languageButtons.forEach((button) => {
     localStorage.setItem('pangaleo-lang', lang);
     applyTranslations(lang);
     setActiveLangButton(lang);
+    closeLangMenu();
   });
 });
+
+
+
+
+
+
+
+
+
+
+

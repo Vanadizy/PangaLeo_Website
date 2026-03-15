@@ -39,12 +39,19 @@
 
   </head>
 
-  <body>
+  <body class="is-loading">
+        <div class="page-loader" role="status" aria-live="polite">
+      <div class="loader-card">
+        <img src="assets/fulllogo.png" alt="PangaLeo logo" />
+        <p>Loading PangaLeo data...</p>
+        <span class="loader-spinner" aria-hidden="true"></span>
+      </div>
+    </div>
       </div>
     </div>
 
 
-    <header class="site-header">
+            <header class="site-header">
 
       <div class="container nav-bar">
 
@@ -57,22 +64,6 @@
         </a>
 
         <div class="nav-right">
-
-          <button
-
-            class="nav-toggle"
-
-            aria-expanded="false"
-
-            aria-controls="site-nav"
-
-            data-i18n="nav.menu"
-
-          >
-
-            Menu
-
-          </button>
 
           <nav id="site-nav" class="site-nav">
 
@@ -89,33 +80,68 @@
             <a href="privacy.html" data-i18n="nav.privacy">Privacy Policy</a>
 
             <a href="terms.html" data-i18n="nav.terms">Terms</a>
-            <a class="nav-cta nav-account" href="https://web.pangaleo.co.tz" target="_blank" rel="noopener" data-i18n="nav.account">Web App</a>
-
-            <button
-
-              class="nav-cta"
-
-              type="button"
-
-              data-link="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
-
-              data-i18n="nav.demo"
-
-            >
-
-              Download now
-
-            </button>
 
           </nav>
 
-          <div class="lang-switch" role="group" aria-label="Language switch">
+          <a class="nav-cta nav-download-standalone" href="download.html" data-i18n="nav.demo">Download</a>
 
-            <button class="lang-button" type="button" data-lang="en">EN</button>
+          <div class="lang-switch">
 
-            <button class="lang-button" type="button" data-lang="sw">SW</button>
+            <button
+
+              class="lang-toggle"
+
+              type="button"
+
+              aria-expanded="false"
+
+              aria-controls="lang-menu"
+
+              aria-label="Language"
+
+            >
+
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+
+                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm7.47 9h-3.2a15.6 15.6 0 0 0-1.18-5 8.02 8.02 0 0 1 4.38 5ZM12 4a13.6 13.6 0 0 1 1.9 7H10.1A13.6 13.6 0 0 1 12 4Zm-2.91 2a15.6 15.6 0 0 0-1.18 5h-3.2a8.02 8.02 0 0 1 4.38-5ZM4.71 13h3.2a15.6 15.6 0 0 0 1.18 5 8.02 8.02 0 0 1-4.38-5Zm5.39 0h3.8A13.6 13.6 0 0 1 12 20a13.6 13.6 0 0 1-1.9-7Zm5.71 5a15.6 15.6 0 0 0 1.18-5h3.2a8.02 8.02 0 0 1-4.38 5Z" />
+
+              </svg>
+
+            </button>
+
+            <div id="lang-menu" class="lang-menu" role="menu">
+
+              <button class="lang-button" type="button" data-lang="sw">SW</button>
+
+              <button class="lang-button" type="button" data-lang="en">EN</button>
+
+            </div>
 
           </div>
+
+          <button
+
+            class="nav-toggle"
+
+            type="button"
+
+            aria-expanded="false"
+
+            aria-controls="site-nav"
+
+            aria-label="Menu"
+
+          >
+
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+
+              <path d="M4 6.5h16M4 12h16M4 17.5h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+            </svg>
+
+            <span class="sr-only" data-i18n="nav.menu">Menu</span>
+
+          </button>
 
         </div>
 
@@ -318,7 +344,7 @@
 
           <a
 
-            href="https://play.google.com/store/apps/details?id=pangaleo.com.pangaleo"
+            href="download.html"
 
             target="_blank"
 
@@ -352,7 +378,7 @@
 
         <small>
 
-          <span data-i18n="footer.copy_prefix">©</span>
+          <span data-i18n="footer.copy_prefix">(c)</span>
 
           <span data-year></span>
 
@@ -413,5 +439,14 @@
   </body>
 
 </html>
+
+
+
+
+
+
+
+
+
 
 

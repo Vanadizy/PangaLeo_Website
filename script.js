@@ -145,6 +145,7 @@ if (slider) {
     .map((value) => value.trim())
     .filter(Boolean);
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobileQuery = window.matchMedia('(max-width: 820px)');
 
   if (track && images.length) {
     const ordered = [...images];
@@ -267,7 +268,7 @@ if (appLinkAnchors.length) {
 const screens = document.querySelector('.screens');
 if (screens) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const screenQuery = window.matchMedia('(max-width: 720px)');
+  const mobileQuery = window.matchMedia('(max-width: 820px)');
   let isAutoScrolling = false;
   let autoScrollTimer = null;
   let currentIndex = 0;
@@ -303,7 +304,7 @@ if (screens) {
   };
 
   const startAutoScroll = () => {
-    if (isAutoScrolling || prefersReducedMotion || !screenQuery.matches) return;
+    if (isAutoScrolling || !shouldAutoScroll()) return;
     updateCurrentIndex();
     isAutoScrolling = true;
     autoScrollTimer = setInterval(() => {
@@ -321,11 +322,17 @@ if (screens) {
   };
 
   const updateAutoScroll = () => {
-    if (prefersReducedMotion || !screenQuery.matches) {
+    if (!shouldAutoScroll()) {
       stopAutoScroll();
     } else {
       startAutoScroll();
     }
+  };
+
+  const shouldAutoScroll = () => {
+    if (prefersReducedMotion) return false;
+    if (!mobileQuery.matches) return false;
+    return screens.scrollWidth > screens.clientWidth;
   };
 
   const pauseAutoScroll = (resumeDelay = 1800) => {
@@ -363,8 +370,38 @@ if (screens) {
   });
   screens.addEventListener('scroll', handleUserScroll, { passive: true });
 
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+
+  screens.addEventListener('mousedown', (event) => {
+    isDragging = true;
+    dragStartX = event.pageX;
+    dragStartScroll = screens.scrollLeft;
+    screens.classList.add('is-dragging');
+    event.preventDefault();
+  });
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    screens.classList.remove('is-dragging');
+  });
+  screens.addEventListener('mouseleave', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    screens.classList.remove('is-dragging');
+  });
+  screens.addEventListener('mousemove', (event) => {
+    if (!isDragging) return;
+    const delta = event.pageX - dragStartX;
+    screens.scrollLeft = dragStartScroll - delta;
+  });
+
   updateAutoScroll();
-  screenQuery.addEventListener('change', updateAutoScroll);
+  setTimeout(updateAutoScroll, 600);
+  window.addEventListener('load', updateAutoScroll);
+  window.addEventListener('resize', updateAutoScroll);
+  mobileQuery.addEventListener('change', updateAutoScroll);
 }
 
 const translations = {
@@ -1025,6 +1062,13 @@ languageButtons.forEach((button) => {
     closeLangMenu();
   });
 });
+
+
+
+
+
+
+
 
 
 

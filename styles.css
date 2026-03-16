@@ -1254,9 +1254,9 @@ main > section.section:nth-of-type(even) {
 
 .screens {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  justify-items: stretch;
+  align-items: stretch;
 }
 
 .screen-card {
@@ -1281,23 +1281,39 @@ main > section.section:nth-of-type(even) {
 .screen-shot {
   width: 100%;
   border-radius: 0;
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
   border: none;
   position: relative;
+  aspect-ratio: 9 / 19.5;
+  max-height: 520px;
 }
 
 .screen-shot img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
   animation: none;
+  display: block;
 }
 
 .screen-caption {
   font-weight: 600;
   color: var(--text);
   font-size: 0.95rem;
+}
+
+.screens::-webkit-scrollbar {
+  display: none;
+}
+
+.screens {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.screens.is-dragging {
+  cursor: grabbing;
 }
 
 .screen-card:nth-child(2) .screen-shot img {
@@ -1848,7 +1864,6 @@ main > section.section:nth-of-type(even) {
   .category-grid,
   .download-grid,
   .steps,
-  .screens,
   .trust-list,
   .footer-grid,
   .contact-grid,
@@ -1866,33 +1881,6 @@ main > section.section:nth-of-type(even) {
 
   .stats {
     grid-template-columns: 1fr;
-  }
-
-  .screens {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-  }
-
-  .screen-card {
-    flex: 0 0 80%;
-    max-width: 80%;
-    scroll-snap-align: start;
-    padding: 0;
-    border-radius: 0;
-  }
-
-  .screens::-webkit-scrollbar {
-    display: none;
-  }
-
-  .screens {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
   }
 
   .site-nav {
@@ -1940,8 +1928,8 @@ main > section.section:nth-of-type(even) {
   }
 }
 
-
-.section-title h2 {
+@media (max-width: 820px) {
+  .section-title h2 {
     font-size: clamp(1.9rem, 7.2vw, 2.5rem);
   }
 
@@ -2105,6 +2093,27 @@ main > section.section:nth-of-type(even) {
 
   .content {
     padding: 28px;
+  }
+}
+
+@media (max-width: 820px) {
+  .screens {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    cursor: grab;
+  }
+
+  .screen-card {
+    flex: 0 0 90%;
+    max-width: 90%;
+    scroll-snap-align: start;
+    padding: 0;
+    border-radius: 0;
   }
 }
 

@@ -891,6 +891,76 @@ main > section.section:nth-of-type(even) {
   }
 }
 
+@media (min-width: 1181px) and (max-width: 1680px) {
+  .hero {
+    padding: 56px 0 54px;
+  }
+
+  .hero .container {
+    max-width: min(1360px, calc(100vw - 64px));
+    padding-inline: clamp(24px, 2.8vw, 44px);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(300px, 0.74fr) minmax(0, 1.26fr);
+    gap: clamp(22px, 2.4vw, 34px);
+  }
+
+  .hero-content {
+    gap: 14px;
+    padding-block: 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 3.15vw, 3.15rem);
+    line-height: 1.06;
+  }
+
+  .hero p {
+    font-size: 0.98rem;
+    max-width: 460px;
+  }
+
+  .store-links {
+    gap: 10px;
+    margin-top: 2px;
+  }
+
+  .store-badge {
+    padding: 10px 14px;
+  }
+
+  .stats {
+    gap: 10px;
+    align-items: start;
+    grid-auto-rows: min-content;
+  }
+
+  .stat {
+    padding: 12px;
+    border-radius: 14px;
+  }
+
+  .stat strong {
+    font-size: 0.96rem;
+  }
+
+  .stat span {
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .hero-slider {
+    min-height: 520px;
+    height: clamp(520px, 68vh, 680px);
+  }
+
+  .slider-viewport,
+  .slider-track {
+    min-height: 520px;
+  }
+}
+
 .slider-caption {
   position: absolute;
   left: 24px;
@@ -930,6 +1000,8 @@ main > section.section:nth-of-type(even) {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
+  align-items: start;
+  grid-auto-rows: min-content;
 }
 
 .stat {
@@ -938,6 +1010,9 @@ main > section.section:nth-of-type(even) {
   padding: 16px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
+  align-self: start;
+  height: fit-content;
+  min-height: 0;
 }
 
 .stat strong {
@@ -945,6 +1020,10 @@ main > section.section:nth-of-type(even) {
   font-family: var(--font-display);
   font-size: 1.1rem;
   color: inherit;
+}
+
+.stat span {
+  display: block;
 }
 
 .section-title {

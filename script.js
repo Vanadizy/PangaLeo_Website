@@ -584,14 +584,14 @@ const translations = {
     'contact.form.button': 'Send message',
     'download.eyebrow': 'Download options',
     'download.title': 'Choose how you want to use PangaLeo.',
-    'download.body': 'Download on Android, open the web app, or get ready for iOS.',
+    'download.body': 'Download on Android or iOS, or open the web app.',
     'download.options.eyebrow': 'Platforms',
     'download.options.title': 'Pick your platform.',
     'download.options.body': 'Each option gives you access to the same listings and account.',
     'download.ios.title': 'iOS App',
     'download.ios.body':
-      "We're preparing the iOS release. For now, use the web app on iPhone or iPad.",
-    'download.ios.button': 'Coming soon',
+      "Download PangaLeo on iPhone or iPad from the Apple App Store.",
+    'download.ios.button': 'Open App Store',
     'download.ios.fallback': 'Use Web App',
     'download.android.title': 'Android App',
     'download.android.body':
@@ -845,14 +845,14 @@ const translations = {
     'contact.form.button': 'Tuma ujumbe',
     'download.eyebrow': 'Chaguo za kupakua',
     'download.title': 'Chagua jinsi ya kutumia PangaLeo.',
-    'download.body': 'Pakua Android, tumia web app, au jiandae kwa iOS.',
+    'download.body': 'Pakua Android au iOS, au tumia web app.',
     'download.options.eyebrow': 'Mifumo',
     'download.options.title': 'Chagua mfumo wako.',
     'download.options.body': 'Kila chaguo kinakupa orodha na akaunti ile ile.',
     'download.ios.title': 'Programu ya iOS',
     'download.ios.body':
-      'Tunajiandaa kutoa iOS. Kwa sasa, tumia web app kwenye iPhone au iPad.',
-    'download.ios.button': 'Inakuja hivi karibuni',
+      'Pakua PangaLeo kwenye iPhone au iPad kupitia Apple App Store.',
+    'download.ios.button': 'Fungua App Store',
     'download.ios.fallback': 'Tumia Tovuti',
     'download.android.title': 'Programu ya Android',
     'download.android.body':
@@ -935,7 +935,7 @@ const browserLang = navigator.language ? navigator.language.slice(0, 2) : 'en';
 const initialLang = translations[storedLang] ? storedLang : 'sw';
 let currentLang = initialLang;
 
-const CONTACT_EMAIL = 'pangaleoapp@gmail.com';
+const CONTACT_EMAIL = 'info@pangaleo.co.tz';
 
 const getTranslation = (key) => {
   const fromCurrent = translations[currentLang] && translations[currentLang][key];

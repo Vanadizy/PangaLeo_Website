@@ -154,7 +154,9 @@ if (slider) {
       const src = filename.includes('/') ? filename : `assets/sliders/${filename}`;
       img.src = src;
       img.alt = 'PangaLeo rental preview';
-      img.loading = 'lazy';
+      img.loading = index === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      img.fetchPriority = index === 0 ? 'high' : 'low';
       img.className = `slider-image${index === 0 ? ' is-active' : ''}`;
       track.appendChild(img);
       return img;
@@ -213,12 +215,12 @@ if (slider) {
   const sliderLink = slider.getAttribute('data-slider-link');
   if (sliderLink) {
     slider.addEventListener('click', () => {
-      window.open(sliderLink, '_blank', 'noopener');
+      window.location.href = sliderLink;
     });
     slider.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        window.open(sliderLink, '_blank', 'noopener');
+        window.location.href = sliderLink;
       }
     });
   }
@@ -462,13 +464,13 @@ const translations = {
     'preview.body_extra':
       'Each listing highlights price, location, and amenities at a glance so clients can decide faster without endless back-and-forth.',
     'preview.card.one.title': 'Sunlit 3BR family home',
-    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) • From TZS 850k/mo',
+    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) - From TZS 850k/mo',
     'preview.card.two.tag': 'Popular',
     'preview.card.two.title': 'Modern 2BR city apartment',
-    'preview.card.two.meta': 'Arusha (Njiro) • From TZS 1.2M/mo',
+    'preview.card.two.meta': 'Arusha (Njiro) - From TZS 1.2M/mo',
     'preview.card.three.tag': 'Seaside',
     'preview.card.three.title': 'Ocean-view villa retreat',
-    'preview.card.three.meta': 'Zanzibar (Stone Town) • From TZS 2.5M/mo',
+    'preview.card.three.meta': 'Zanzibar (Stone Town) - From TZS 2.5M/mo',
     'why.eyebrow': 'Why PangaLeo',
     'why.title': 'Clarity for owners. Confidence for clients.',
     'why.body':
@@ -722,13 +724,13 @@ const translations = {
     'preview.body_extra':
       'Kila orodha inaonyesha bei, eneo, na huduma muhimu kwa muonekano wa haraka bila mazungumzo marefu.',
     'preview.card.one.title': 'Nyumba ya familia vyumba 3 yenye mwanga mwingi',
-    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) ? Kuanzia TZS 850k/mo',
+    'preview.card.one.meta': 'Dar es Salaam (Kinondoni) - Kuanzia TZS 850k/mo',
     'preview.card.two.tag': 'Maarufu',
     'preview.card.two.title': 'Fleti ya kisasa vyumba 2 mjini',
-    'preview.card.two.meta': 'Arusha (Njiro) ? Kuanzia TZS 1.2M/mo',
+    'preview.card.two.meta': 'Arusha (Njiro) - Kuanzia TZS 1.2M/mo',
     'preview.card.three.tag': 'Pwani',
     'preview.card.three.title': 'Villa yenye mwonekano wa bahari',
-    'preview.card.three.meta': 'Zanzibar (Stone Town) ? Kuanzia TZS 2.5M/mo',
+    'preview.card.three.meta': 'Zanzibar (Stone Town) - Kuanzia TZS 2.5M/mo',
     'why.eyebrow': 'Kwa nini PangaLeo',
     'why.title': 'Uwazi kwa wamiliki. Ujasiri kwa wateja.',
     'why.body':

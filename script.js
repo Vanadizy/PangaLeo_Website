@@ -662,7 +662,7 @@ const translations = {
       'You may not use the service for any illegal or unauthorized purpose, or to violate any laws in your jurisdiction.',
     'terms.availability.title': '5. Service Availability',
     'terms.availability.body':
-      'We reserve the right to modify, suspend, or discontinue the service at any time without notice.',
+      'We reserve the right to modify or discontinue the service at any time, but only for specific reasons, and all users will be notified.',
     'terms.contact.title': '6. Contact Information',
     'terms.contact.body':
       'Questions about these Terms & Conditions should be sent to'
@@ -923,7 +923,7 @@ const translations = {
       'Huruhusiwi kutumia huduma kwa madhumuni haramu au kukiuka sheria za mamlaka yako.',
     'terms.availability.title': '5. Upatikanaji wa Huduma',
     'terms.availability.body':
-      'Tuna haki ya kubadilisha, kusimamisha, au kuondoa huduma wakati wowote bila taarifa.',
+      'Tuna haki ya kubadili na kusitisha huduma wakati wowote lakini kwa sababu maalumu, na watumiaji wote watapewa taarifa.',
     'terms.contact.title': '6. Taarifa za Mawasiliano',
     'terms.contact.body':
       'Maswali kuhusu Masharti na Vigezo haya yatumwe kupitia'

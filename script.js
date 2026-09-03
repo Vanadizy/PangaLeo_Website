@@ -960,8 +960,8 @@ const translations = {
 
 const languageButtons = document.querySelectorAll('[data-lang]');
 
-const storedLang = localStorage.getItem('pangaleo-lang');
-const browserLang = navigator.language ? navigator.language.slice(0, 2) : 'en';
+const LANGUAGE_STORAGE_KEY = 'pangaleo-lang-v2';
+const storedLang = localStorage.getItem(LANGUAGE_STORAGE_KEY);
 const initialLang = translations[storedLang] ? storedLang : 'sw';
 let currentLang = initialLang;
 
@@ -1086,7 +1086,7 @@ languageButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const lang = button.dataset.lang;
     if (!lang) return;
-    localStorage.setItem('pangaleo-lang', lang);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
     applyTranslations(lang);
     setActiveLangButton(lang);
     closeLangMenu();

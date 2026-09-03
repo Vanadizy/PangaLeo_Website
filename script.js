@@ -666,6 +666,10 @@ const translations = {
     'terms.contact.title': '6. Contact Information',
     'terms.contact.body':
       'Questions about these Terms & Conditions should be sent to'
+    ,
+    'terms.subscription.title': '7. Subscription & Access to Landlord Contact Information',
+    'terms.subscription.body':
+      'PangaLeo may offer users a monthly subscription service that provides access to the contact information of landlords or property owners who have listed rental properties on the PangaLeo platform. By purchasing a subscription, the user agrees that the subscription is valid for one month from the date and time of successful payment unless otherwise stated by PangaLeo; during the active subscription period, the subscriber may access landlord contact information for eligible rental listings, including new listings added during the subscription period; no separate payment is required for each contact unless otherwise specified; access ends when the subscription expires until the user renews or buys a new subscription; subscription access does not guarantee a rental, a response from a landlord, or a rental agreement; PangaLeo does not guarantee the availability, accuracy, legitimacy, pricing, or continued availability of every listing; users must use landlord contact information responsibly and only for legitimate rental inquiries and must not misuse, distribute, sell, publish, or share it without authorization; and PangaLeo may modify subscription prices, features, access conditions, or plans from time to time and will communicate applicable changes through the platform or other appropriate channels.'
   },
   sw: {
     'nav.menu': 'Menyu',
@@ -927,6 +931,10 @@ const translations = {
     'terms.contact.title': '6. Taarifa za Mawasiliano',
     'terms.contact.body':
       'Maswali kuhusu Masharti na Vigezo haya yatumwe kupitia'
+    ,
+    'terms.subscription.title': '7. Usajili na Ufikiaji wa Taarifa za Mawasiliano za Mwenye Nyumba',
+    'terms.subscription.body':
+      'PangaLeo inaweza kuwapa watumiaji huduma ya usajili wa kila mwezi inayowezesha kufikia taarifa za mawasiliano za wapangishaji au wamiliki wa mali waliotangaza nyumba za kupanga kwenye jukwaa la PangaLeo. Kwa kununua usajili, mtumiaji anakubali kwamba usajili utakuwa halali kwa mwezi mmoja kuanzia tarehe na saa ya malipo yaliyofaulu isipokuwa kama PangaLeo itaeleza vinginevyo; katika kipindi ambacho usajili unaendelea kutumika, mteja anaweza kufikia taarifa za mawasiliano za wapangishaji kwa matangazo yanayostahili, ikiwemo matangazo mapya yaliyoongezwa ndani ya kipindi cha usajili; hakuna malipo tofauti yanayohitajika kwa kila mawasiliano isipokuwa kama itaelezwa vinginevyo; ufikiaji utaisha usajili unapomalizika hadi mtumiaji asasishe au akanunue usajili mpya; ufikiaji kupitia usajili hauhakikishi upatikanaji wa nyumba, jibu kutoka kwa mwenye nyumba, au makubaliano ya upangaji; PangaLeo haihakikishi upatikanaji, usahihi, uhalali, bei, au upatikanaji unaoendelea wa kila tangazo; watumiaji lazima watumie taarifa za mawasiliano za wapangishaji kwa uwajibikaji na kwa madhumuni halali ya uchunguzi wa upangaji tu na hawapaswi kuzitumia vibaya, kuzisambaza, kuziuza, kuzichapisha, au kuzishiriki bila ruhusa; na PangaLeo inaweza kubadilisha bei za usajili, vipengele, masharti ya ufikiaji, au mipango wakati wowote na itawasilisha mabadiliko husika kupitia jukwaa au njia nyingine zinazofaa.'
   }
 };
 
